@@ -1,0 +1,30 @@
+.mat-mdc-header-cell {
+  //background-color: #e0e0e0 !important;
+  background-color: transparent !important;
+  padding: 1rem !important;
+  height: 48px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 18px !important;
+  text-align: left !important;
+  color: #161616 !important;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.mat-mdc-row {
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.mat-mdc-cell,
+.mdc-data-table__cell {
+  padding: 1rem !important;
+}
+
+.mat-header-row,
+.mat-row {
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.mat-row:hover {
+  background-color: #e0f7fa;
+}

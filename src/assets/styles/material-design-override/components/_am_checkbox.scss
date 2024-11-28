@@ -1,0 +1,26 @@
+.mdc-checkbox {
+  padding: 0px !important;
+}
+
+.mat-mdc-checkbox-touch-target {
+  min-height: 20px !important;
+  min-width: 20px !important;
+  height: 20px !important;
+  width: 20px !important;
+}
+
+.mdc-checkbox__native-control {
+  min-height: 20px !important;
+  min-width: 20px !important;
+  height: 20px !important;
+  width: 20px !important;
+}
+
+.mdc-checkbox__background {
+  top: 0px !important;
+  left: 0px !important;
+}
+
+.mdc-checkbox .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background .mdc-checkbox__checkmark {
+  color: white !important;
+}

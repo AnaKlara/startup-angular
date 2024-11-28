@@ -1,0 +1,147 @@
+<breadcrumb [breadcrumbs]="breadcrumbs"></breadcrumb>
+<section id="section-filter">
+  <H1 id="page-title">Consultar formulários</H1>
+  <div id="div-form">
+    <form [formGroup]="filtro">
+      <div>
+        <mat-form-field appearance="outline" id="input-date-range">
+          <mat-label>Período</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate formControlName="dataInicio" placeholder="Início" (focus)="picker.open()" readonly />
+            <input matEndDate formControlName="dataFim" placeholder="Fim" (focus)="picker.open()" readonly />
+          </mat-date-range-input>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+
+          @if (filtro.controls.dataInicio.hasError('required') || filtro.controls.dataFim.hasError('required')) {
+            <mat-error>É obrigatório inserir duas datas.</mat-error>
+          }
+          @if (filtro.hasError('dateRangeExceeded')) {
+            <mat-error>Período máximo de 90 dias excedido.</mat-error>
+          }
+        </mat-form-field>
+        <div>
+          <mat-slide-toggle id="slide-data-criacao" formControlName="dataCriacao">Data da Criação</mat-slide-toggle>
+          <mat-slide-toggle id="slide-data-envio" formControlName="dataEnvio">Data de Envio</mat-slide-toggle>
+        </div>
+      </div>
+
+      <div id="input-text-container">
+        <div
+          id="tag-input-text-container"
+          (click)="onClickOnInputTag()"
+          [ngClass]="{ focused: isSerachTagContainerOpen }"
+        >
+          <div id="div-icon">
+            <mat-icon matPrefix class="search-icon">search</mat-icon>
+          </div>
+          <div id="tags-container" matPrefix>
+            <ng-container *ngFor="let tag of tagsList">
+              <div
+                class="tag"
+                matRipple
+                *ngIf="tagFormControlGroup.get(tag.tagName)?.value?.length > 0"
+                [ngClass]="{ hidden: this.tagFormControlGroup.get(tag.tagName)?.value?.length === 0 }"
+                (click)="recuperarDadosDaTag(tag.tagName)"
+              >
+                <div>
+                  {{ tag.tagNameView }}:
+                  <div *ngIf="isArray(tagFormControlGroup.get(tag.tagName)?.value)">
+                    <span *ngFor="let value of tagFormControlGroup.get(tag.tagName)?.value">{{
+                      getSelectionNameByValue(tag.tagName, value)
+                    }}</span>
+                  </div>
+                  <div *ngIf="isString(tagFormControlGroup.get(tag.tagName)?.value!)">
+                    <span>{{ tagFormControlGroup.get(tag.tagName)?.value }}</span>
+                  </div>
+                  <img (click)="apagarValoresDaTag(tag.tagName)" />
+                </div>
+              </div>
+            </ng-container>
+            <input
+              maxlength="30"
+              appRestrictSpecialChars
+              (keydown.enter)="onEnterInsideInput($event)"
+              [formControl]="searchControl"
+              [placeholder]="placeholderInputText"
+              id="input-text"
+            />
+          </div>
+        </div>
+
+        <div
+          id="input-filter"
+          appPositionBelow
+          [querySelector]="'#tag-input-text-container'"
+          [class.show]="isSerachTagContainerOpen"
+          *ngIf="isSerachTagContainerOpen"
+        >
+          <h6>Buscar por</h6>
+          <div id="chip-buttons">
+            <button
+              *ngFor="let tag of tagsList"
+              class="chip-button"
+              matRipple
+              [ngClass]="{ highlight: tagSelecionada.tagName === tag.tagName }"
+              (click)="novaTagSelecionada(tag)"
+              >{{ tag.tagNameView }}</button
+            >
+          </div>
+
+          <div id="div-select">
+            <div id="div-loading" *ngIf="loading">
+              <p>Carregando opções</p>
+              <img src="../../../../assets/img/loading-spinner.svg" alt="" />
+            </div>
+            <div
+              *ngIf="selectOptionsList.length > 0 && loading === false && visualizarSelecionados === false"
+              id="checkbox-list-container"
+            >
+              <mat-checkbox
+                class="checkbox"
+                [ngClass]="alreadyExits(selectOption) ? 'checked' : ''"
+                *ngFor="let selectOption of selectOptionsList"
+                [checked]="alreadyExits(selectOption)"
+                (change)="toggleOpcaoCheckbox($event, selectOption)"
+                >{{ selectOption.label }}</mat-checkbox
+              >
+            </div>
+
+            <div
+              *ngIf="selectOptionsList.length > 0 && loading === false && visualizarSelecionados === true"
+              id="checkbox-list-container"
+            >
+              <mat-checkbox
+                class="checkbox"
+                [ngClass]="alreadyExits(selectOption) ? 'checked' : ''"
+                *ngFor="let selectOption of selectOptionsList"
+                [checked]="true"
+                (change)="toggleOpcaoCheckbox($event, selectOption)"
+                >{{ selectOption.label }}</mat-checkbox
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="button-petro secondary-button"
+        id="button-consultar"
+        (click)="clicouConsultar()"
+        matRipple
+        [disabled]="isButtonConsultarDisabled"
+        [class.disabled]="isButtonConsultarDisabled"
+        >Consultar</button
+      >
+    </form>
+  </div>
+</section>
+
+@if (pageOfListaFormularioResumo) {
+  <resultado-consulta
+    [PageOfListaFormularioResumo]="pageOfListaFormularioResumo"
+    [FiltroListaFormularioResumo]="filtroCastModel"
+  ></resultado-consulta>
+}
+@if (!pageOfListaFormularioResumo) {
+  <ultimos-formularios></ultimos-formularios>
+}

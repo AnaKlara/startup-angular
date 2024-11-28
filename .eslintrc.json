@@ -1,0 +1,96 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "plugins": ["@typescript-eslint", "import", "jsdoc", "prefer-arrow", "rxjs", "rxjs-angular", "angular"],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript",
+        "plugin:jsdoc/recommended",
+        "plugin:rxjs/recommended",
+        "plugin:angular/johnpapa",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "rxjs/no-implicit-any-catch": "error",
+        "no-mixed-spaces-and-tabs": "error",
+        "prettier/prettier": [
+          "error",
+          {
+            "tabWidth": 2,
+            "endOfLine": "auto",
+            "singleQuote": true,
+            "quoteProps": "consistent",
+            "trailingComma": "all",
+            "arrowParens": "avoid",
+            "printWidth": 120,
+            "semi": true,
+            "bracketSpacing": true,
+            "htmlWhitespaceSensitivity": "strict"
+          }
+        ],
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-explicit-any": "warn",
+        "import/order": [
+          "warn",
+          {
+            "groups": [["builtin", "external", "internal"]],
+            "newlines-between": "always",
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            }
+          }
+        ],
+        "prefer-arrow/prefer-arrow-functions": [
+          "warn",
+          {
+            "disallowPrototype": true,
+            "singleReturnOnly": false,
+            "classPropertiesAllowed": false
+          }
+        ],
+        "rxjs/no-unsafe-switchmap": "error",
+        "rxjs-angular/prefer-async-pipe": "error",
+        "angular/no-controller": "error",
+        "angular/no-inline-template": "error"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {
+        "@angular-eslint/template/conditional-complexity": ["error", { "maxComplexity": 4 }],
+        "@angular-eslint/template/cyclomatic-complexity": ["error", { "maxComplexity": 5 }],
+        "@angular-eslint/template/no-duplicate-attributes": "error",
+        "@angular-eslint/template/use-track-by-function": "warn"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "excludedFiles": ["*inline-template-*.component.html"],
+      "extends": ["plugin:prettier/recommended"],
+      "rules": {
+        "prettier/prettier": ["error", { "parser": "angular" }]
+      }
+    }
+  ]
+}

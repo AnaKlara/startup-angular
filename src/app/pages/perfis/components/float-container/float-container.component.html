@@ -1,0 +1,17 @@
+<section id="float-container" [ngClass]="{ open: isOpen }">
+  <div class="float-container-header">
+    <p class="float-container-title">{{ title }}</p>
+    <button class="button-close" (click)="closeButtonClick()">
+      <span
+        ><img
+          height="16"
+          width="16"
+          src="../../../../../assets/icons/close.svg"
+          alt=""
+      /></span>
+    </button>
+  </div>
+  <div class="float-container-content">
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </div>
+</section>

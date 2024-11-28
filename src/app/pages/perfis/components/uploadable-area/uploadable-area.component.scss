@@ -1,0 +1,28 @@
+:host {
+  .upload-area {
+    border: 2px dashed #008542;
+    border-radius: 4px;
+    padding: 20px;
+    height: 4.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    color: #008542;
+
+    &.active {
+      border-color: #002e17;
+      background-color: #bfe1d0;
+      color: white;
+    }
+
+    input[type='file'] {
+      display: none;
+    }
+
+    p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

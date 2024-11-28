@@ -1,0 +1,30 @@
+@import '../../../../../styles.scss';
+
+:host {
+  .chip-list {
+    min-width: 33rem;
+    width: 33rem;
+  }
+  .red {
+    color: red !important;
+  }
+  .option-container {
+    .option-title {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+      letter-spacing: 0.5px;
+      text-align: left;
+      color: #191919;
+    }
+    .option-subtitle {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+      color: #999999;
+    }
+  }
+  .option-container:hover {
+    background-color: #0085420f;
+  }
+}

@@ -1,0 +1,181 @@
+<div class="table-container">
+  <div class="header-bar">
+    <mat-form-field class="search-solicitacoes-form-header">
+      <mat-icon matPrefix style="font-size: 1.5rem">search</mat-icon>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Localizar nos resultados..."
+        #input
+        autocomplete="off" />
+    </mat-form-field>
+
+    <div class="div-actions">
+      <mat-slide-toggle>Mostrar desativados</mat-slide-toggle>
+      <button
+        mat-raised-button
+        [disabled]="howManyUsersIsChecked === 0"
+        [matMenuTriggerFor]="gerenciarEmLoteMenu">
+        Gerenciar
+      </button>
+      <button
+        class="chip-qtd-selected"
+        *ngIf="howManyUsersIsChecked !== 0"
+        matRipple
+        (click)="unCheckAllRows()">
+        <p> {{ howManyUsersIsChecked }} selecionados</p>
+        <mat-icon class="icon-unselect">cancel</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <mat-menu #gerenciarEmLoteMenu="matMenu">
+    <button mat-menu-item (click)="openModalEditarPermissoes()">
+      <mat-icon>lock_person</mat-icon>
+      <span>Permissões</span>
+    </button>
+    <button mat-menu-item (click)="openModalEditarNotificacoes()">
+      <mat-icon>notifications</mat-icon>
+      <span>Notificações</span>
+    </button>
+    <button mat-menu-item (click)="openModalEditarConfirmarDesativar()">
+      <mat-icon>person_off</mat-icon>
+      <span>Desativar</span>
+    </button>
+  </mat-menu>
+
+  <table
+    mat-table
+    *ngIf="dataSource"
+    [dataSource]="dataSource"
+    multiTemplateDataRows
+    class="solicitacoes-table"
+    matSort
+    matSortActive="nome"
+    matSortDirection="asc"
+    matSortDisableClear
+    (matSortChange)="sortData($event)">
+    <ng-container matColumnDef="checkbox">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox
+          (click)="toggleCheckAllRows(!checkAll)"
+          [ngModel]="checkAll"></mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let solicitacao; let i = index">
+        <mat-checkbox
+          (click)="$event.stopPropagation()"
+          (change)="toggleCheckBox(solicitacao)"
+          [checked]="solicitacao.isChecked"></mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="chave">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="chave-header"
+        mat-sort-header>
+        Chave
+      </th>
+      <td mat-cell *matCellDef="let solicitacao" class="chave-cell">
+        <mat-icon style="font-size: 18px; color: #666666">
+          account_circle
+        </mat-icon>
+        <button
+          class="button-chave-usuario"
+          (click)="navigateToPerfilPage(solicitacao.chave)">
+          {{ solicitacao.chave }}
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="usuario">
+      <th mat-header-cell *matHeaderCellDef class="nome-header" mat-sort-header>
+        Usuário
+      </th>
+      <td mat-cell *matCellDef="let solicitacao" class="nome-cell">
+        {{ solicitacao.nome }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lotacao">
+      <th mat-header-cell *matHeaderCellDef class="tipo-header">Lotação</th>
+      <td mat-cell *matCellDef="let solicitacao" class="tipo-cell">
+        {{ solicitacao.lotacao }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="orgaos">
+      <th mat-header-cell *matHeaderCellDef class="documentador-header">
+        Órgãos
+      </th>
+      <td mat-cell *matCellDef="let solicitacao" class="documentador-cell">
+        <ng-container
+          *ngFor="let orgao of solicitacao.orgaos; trackBy: trackByOrgao">
+          <h3> {{ orgao.nome }}</h3>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="solicitacoes">
+      <th mat-header-cell *matHeaderCellDef> Solicitações </th>
+      <td mat-cell *matCellDef="let solicitacao">
+        <div
+          class="chips-solicitacoes"
+          [innerHTML]="solicitacao.solicitacoes | solicitacaoQtd">
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="more" class="more-container">
+      <th mat-header-cell *matHeaderCellDef class="more-header"></th>
+      <td mat-cell *matCellDef="let solicitacao" class="more-cell">
+        <button
+          [matMenuTriggerFor]="moreMenu"
+          [matMenuTriggerData]="{ solicitacao }">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <mat-menu #moreMenu="matMenu">
+      <ng-template matMenuContent let-solicitacao="solicitacao">
+        <button mat-menu-item (click)="redirectToVisualizar(solicitacao)">
+          <mat-icon>open_in_new</mat-icon>
+          <span>Visualizar</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>check</mat-icon>
+          <span>Aprovar</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>close</mat-icon>
+          <span>Desaprovar</span>
+        </button>
+      </ng-template>
+    </mat-menu>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: columnsToDisplay"
+      [ngClass]="{ 'selected-row': row.isChecked }"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" [attr.colspan]="columnsToDisplay.length">
+        Nenhum dado encontrado na tabela para "{{ input.value }}"
+      </td>
+    </tr>
+  </table>
+
+  <mat-paginator
+    [pageSize]="filtrosConsultaListaDeSolicitacoes.pageSize"
+    [pageIndex]="filtrosConsultaListaDeSolicitacoes.page - 1"
+    [length]="paginaDeListaDeSolicitacoesResumidas.totalItems"
+    (page)="handlePageEvent($event)"
+    *ngIf="
+      paginaDeListaDeSolicitacoesResumidas.totalItems >
+      filtrosConsultaListaDeSolicitacoes.pageSize
+    "
+    [showFirstLastButtons]="true"></mat-paginator>
+</div>

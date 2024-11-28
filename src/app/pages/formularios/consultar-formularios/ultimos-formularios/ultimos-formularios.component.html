@@ -1,0 +1,23 @@
+<section id="ultimos-formularios">
+  <div id="ultimos-formularios-container">
+    <h1 class="title">Últimos formulários</h1>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab label="Formulários em edição da gerência">
+        @if (pageOfListaDeFormulariosEmEdicao) {
+          <tabela-formularios
+            [PageOfListaFormularioResumo]="pageOfListaDeFormulariosEmEdicao"
+            [FiltroListaFormularioResumo]="filtroFormulariosEmEdicao"
+          ></tabela-formularios>
+        }
+      </mat-tab>
+      <mat-tab label="Formulários enviados da gerência">
+        @if (pageOfListaDeFormulariosEntregues) {
+          <tabela-formularios
+            [PageOfListaFormularioResumo]="pageOfListaDeFormulariosEntregues"
+            [FiltroListaFormularioResumo]="filtroFormulariosEntregues"
+          ></tabela-formularios>
+        }
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</section>

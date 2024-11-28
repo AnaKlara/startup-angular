@@ -1,0 +1,94 @@
+// 'ngx-toastr/toastr'; // estilo original
+@import 'fonts.scss';
+
+#toast-container {
+  top: 4rem !important;
+  right: 1.5rem !important;
+  width: 28rem !important ;
+}
+
+/* Estilo geral para todos os toasts */
+.ngx-toastr {
+  width: 24rem;
+  padding: 16px;
+  box-shadow: 0px 2px 6px 0px #0000004d;
+  width: 28rem !important;
+}
+
+.toast-title {
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 20px !important;
+  color: #101213 !important;
+}
+
+.toast-message {
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  color: #302f2f !important;
+}
+
+/* Estilos específicos para toast de sucesso */
+.toast-success {
+  background-image: url('../../assets/icons/toast/checkmark.svg') !important;
+  background-color: #defbe6;
+  border-left: 3px solid #24a148;
+  color: #161616;
+}
+
+.toast-success .toast-icon {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* Estilos específicos para toast de erro */
+.toast-error {
+  background-image: url('../../assets/icons/toast/error.svg') !important;
+  border-left: 3px solid #da1e28;
+  background: #fff1f1;
+}
+
+.toast-error .toast-icon {
+  width: 20px;
+  height: 20px;
+  color: #da1e28;
+}
+
+/* Estilos específicos para toast de informação */
+.toast-info {
+  background-image: url('../../assets/icons/toast/info.svg') !important;
+  border-left: 3px solid #00b2a9;
+  background: #d8f7f6;
+}
+
+.toast-info .toast-icon {
+  width: 20px !important;
+  height: 20px !important;
+  color: #00b2a9 !important;
+}
+
+/* Estilos específicos para toast de aviso */
+.toast-warning {
+  background-image: url('../../assets/icons/toast/warn.svg') !important;
+  border-left: 3px solid #ffc107;
+  background: #eee5cc;
+}
+
+.toast-warning .toast-icon {
+  width: 20px !important;
+  height: 20px !important;
+  color: #ffc107 !important;
+}
+
+/* Estilos para o botão de fechar */
+.toast-close-button {
+  color: #101213;
+  opacity: 0.7;
+}
+
+.toast-close-button:hover {
+  opacity: 1;
+}

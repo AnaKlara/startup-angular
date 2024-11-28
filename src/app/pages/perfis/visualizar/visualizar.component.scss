@@ -1,0 +1,299 @@
+@import '../../../../styles.scss';
+
+:host {
+  #visualizar-header {
+    background-color: $white;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 1.5rem;
+    .user-info {
+      display: flex;
+
+      .name-abreviation-circle {
+        width: 56px;
+        height: 56px;
+        background-color: $secondary-color;
+        color: $white;
+        border-radius: 56px;
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .name-lot {
+        margin-left: 1rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        .p-lot {
+          color: #6a7178;
+          font-size: 12px;
+        }
+        .p-name {
+          margin-top: 4px;
+          font-size: 20px;
+          color: #161616;
+        }
+      }
+      .chip-chave {
+        padding: 2px 8px;
+        margin-left: 1rem;
+        background-color: #333333;
+        color: $white;
+        border-radius: 32px;
+        height: 24px;
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-self: flex-end;
+        margin-bottom: 10px;
+      }
+    }
+
+    .user-action-buttons {
+      button {
+        position: relative;
+        height: 36px;
+        background-color: $secondary-color;
+        color: white;
+        vertical-align: bottom;
+      }
+      button:hover {
+        background-color: $secondary-dark;
+      }
+      .button-editar {
+        padding: 10px 1rem;
+        border-right: 1px solid $white;
+        border-radius: 8px 0px 0px 8px;
+        span {
+          position: relative;
+          bottom: 10px;
+          font-size: 14px;
+          line-height: 16px;
+          font-weight: 700;
+        }
+      }
+      .button-menu-trigger {
+        padding: 8px 6px;
+        border-radius: 0px 8px 8px 0px;
+      }
+    }
+  }
+
+  #visualizar-content {
+    padding: 1.5rem;
+    .tabs-container {
+      background-color: $white;
+      .div-tipo-perfil {
+        background-color: $white;
+        padding: 1.5rem 1rem 1rem 1rem;
+        border-bottom: 8px solid #f0f0f0;
+        .p-tipo-perfil {
+          font-weight: 700;
+          margin-bottom: 1rem;
+        }
+        .chip-tipo-perfil {
+          padding: 2px 8px;
+          margin-left: 1rem;
+          background-color: #f2f2f2;
+          color: #191919;
+          border-radius: 32px;
+          height: 24px;
+          display: inline;
+          // align-content: center;
+          // flex-wrap: wrap;
+          // justify-content: center;
+          // align-self: flex-end;
+          margin-bottom: 10px;
+        }
+      }
+      .permissoes-container {
+        padding: 1rem;
+        .permissoes-title {
+          font-weight: 700;
+          color: #191919;
+          margin-bottom: 1rem;
+        }
+        .permissao {
+          padding: 20px 16px;
+          border-radius: 4px;
+          border: 1px solid #f2f2f2;
+          display: flex;
+          flex-wrap: wrap;
+          p {
+            font-size: 12px;
+            display: inline-flex;
+          }
+          &-tipo {
+            min-width: 16rem;
+            display: flex;
+            flex-direction: column;
+            &-nome {
+              margin-top: 0.5rem;
+              color: #161616;
+              font-size: 14px !important;
+              line-height: 14px;
+              font-weight: 500;
+            }
+          }
+          .permissao-formularios-container {
+            margin-left: 6rem;
+            min-width: 44rem;
+            display: flex;
+            flex-direction: column;
+            .chips-container {
+              margin-top: 0.5rem;
+              .chip-formulario {
+                padding: 5px 10px;
+                line-height: 14px;
+                font-weight: 500;
+                background-color: #edf2ff;
+                color: #5d667d;
+                border-radius: 32px;
+                height: 24px;
+                display: inline-flex;
+                font-size: 14px !important;
+              }
+              .chip-formulario:not(:first-of-type) {
+                margin-left: 0.5rem;
+              }
+            }
+          }
+          .permissao-tipo-perfil {
+            position: absolute;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            .chip-tipo-perfil {
+              margin-top: 0.5rem;
+              padding: 5px 10px;
+              line-height: 14px;
+              font-weight: 500;
+              background-color: #f2f2f2;
+              color: #191919;
+              border-radius: 32px;
+              height: 24px;
+              display: inline-flex;
+              font-size: 14px !important;
+            }
+          }
+        }
+        .permissao:not(:first-of-type) {
+          margin-top: 0.5rem;
+        }
+      }
+      .notificacoes-container {
+        padding: 1.5rem 1rem 1rem 1rem;
+        .notificacoes-title {
+          font-weight: 700;
+          line-height: 16px;
+          color: #191919;
+          margin-bottom: 1rem;
+        }
+        .notificacao {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          padding: 1rem;
+          border-radius: 4px;
+          border: 1px solid #f2f2f2;
+          p {
+            font-size: 12px;
+          }
+          .toggle {
+            display: flex;
+            vertical-align: middle;
+            align-content: center;
+            flex-wrap: wrap;
+          }
+          .div-tipo-formulario {
+            width: 30rem;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            p {
+              display: inline-block;
+            }
+            .chip-abrv {
+              height: 24px;
+              border-radius: 32px;
+              padding: 5px 10px;
+              background: #5d667d;
+              color: white;
+              display: inline-flex;
+              align-content: center;
+              line-height: 14px;
+            }
+            .nome-formulario {
+              margin-left: 0.5rem;
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 20px;
+              letter-spacing: 0.25px;
+              text-align: left;
+              color: #161616;
+            }
+          }
+          .div-periodicidade {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            width: 8rem;
+            p {
+              display: inline-block;
+            }
+          }
+          .div-tipo-alarme {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            width: 15rem;
+            p {
+              display: inline-block;
+            }
+          }
+          .div-status {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            width: 15rem;
+            p {
+              display: inline-block;
+            }
+          }
+          .div-criado-por {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            width: 10rem;
+            p {
+              display: inline-block;
+            }
+          }
+          .chips-container {
+            margin-top: 0.5rem;
+            .chip {
+              background-color: #f2f2f2;
+              color: #191919;
+              height: 1.5rem;
+              border-radius: 2rem;
+              padding: 2px 8px;
+              font-size: 14px;
+              line-height: 14px;
+              align-content: center;
+              font-weight: 400;
+            }
+            .chip:not(:first-of-type) {
+              margin-left: 0.5rem;
+            }
+          }
+        }
+        .notificacao:not(:first-of-type) {
+          margin-top: 0.5rem;
+        }
+      }
+    }
+  }
+}

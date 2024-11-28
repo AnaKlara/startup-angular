@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "angular.ng-template",
+    "johnpapa.angular-essentials",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.vscode-typescript-next",
+    "esbenp.prettier-vscode",
+    "rvest.vs-code-prettier-eslint",
+    "stylelint.vscode-stylelint",
+    "jock.svg",
+    "ansenhuang.vscode-view-readme",
+    "vscode-icons-team.vscode-icons"
+  ]
+}

@@ -1,0 +1,21 @@
+<div class="modal">
+  <div class="modal-header">
+    <h1>Permissão</h1>
+    <button (click)="closeModal()">
+      <img src="../../../../../../assets/icons/close.svg" width="20" />
+    </button>
+  </div>
+  <div class="content">
+    <div [formGroup]="perfilForm">
+      <input-lista-permissao
+        [permissoes]="perfilForm.get('permissoes')"></input-lista-permissao>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button mat-flat-button color="accent" (click)="confirmar()" class="btn">
+      <mat-icon class="modal-footer-icon">save</mat-icon>
+      Confirmar
+    </button>
+    <button mat-button (click)="cancelar()"> Cancelar </button>
+  </div>
+</div>

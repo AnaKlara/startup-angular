@@ -1,0 +1,26 @@
+<mat-form-field class="ff-tipo-form">
+  <mat-label>Tipo de Formulário</mat-label>
+  <input
+    type="text"
+    [formControl]="searchFormulario"
+    placeholder="Digite e pesquise"
+    matInput
+    [matAutocomplete]="tipoFormulario" />
+  @if (loadingFormAutocomplete) {
+    <button matSuffix mat-icon-button>
+      <img
+        matSuffix
+        src="../../../../../assets/img/loading-spinner.svg"
+        width="1rem" />
+    </button>
+  }
+  <mat-autocomplete
+    #tipoFormulario="matAutocomplete"
+    (optionSelected)="autocompleteSelectionChange($event)">
+    @for (option of listaFormularios; track option) {
+      <mat-option [value]="option"
+        >{{ option.sigla }} - {{ option.descricao }}</mat-option
+      >
+    }
+  </mat-autocomplete>
+</mat-form-field>

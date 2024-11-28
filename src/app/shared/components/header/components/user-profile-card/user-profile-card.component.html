@@ -1,0 +1,18 @@
+<div class="floating-div" [ngClass]="{ hidden: !isVisible, visible: isVisible }">
+  <div class="perfil">
+    <div id="circle">
+      {{ usuario.nome | nameAbreviation }}
+    </div>
+    <div class="dados-perfil">
+      <p class="nome">{{ usuario.nome }}</p>
+      <p class="chave">{{ usuario.chave }}</p>
+      <p class="email">{{ usuario.email }}</p>
+      <a class="meu-perfil" (click)="this.isVisible = false"> Meu perfil </a>
+    </div>
+  </div>
+  <hr />
+  <button class="button-sair">
+    Sair
+    <img src="../../../../../../../assets/icons/logout.svg" alt="" />
+  </button>
+</div>

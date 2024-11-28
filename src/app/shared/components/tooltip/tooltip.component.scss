@@ -1,0 +1,26 @@
+.tooltip {
+  position: fixed;
+  background-color: #393939;
+  border-radius: 2px;
+  color: #ffffff;
+  padding: 0.5rem;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  transform: translateX(-50%);
+  max-width: 16rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.tooltip::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #393939;
+  position: absolute;
+  left: calc(50% - 5px);
+  top: -5px;
+}

@@ -1,0 +1,19 @@
+<div class="select-wrapper">
+  <p *ngIf="!!label" style="margin-bottom: 0.5rem">{{ label }}</p>
+  <div class="select" (click)="toggleOpen()">
+    <div class="select__trigger">
+      <span>{{ selectedOption?.label || 'Selecione...' }}</span>
+      <div class="arrow" [ngClass]="{ rotated: isOpen }"></div>
+    </div>
+    <div class="custom-options" *ngIf="isOpen">
+      <span
+        class="custom-option"
+        [ngClass]="{ selected: option.value == selectedOption?.value }"
+        *ngFor="let option of options"
+        (click)="selectOption(option)"
+      >
+        {{ option.label }}
+      </span>
+    </div>
+  </div>
+</div>

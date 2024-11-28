@@ -1,0 +1,82 @@
+<p id="notificacoes-title">Órgão / Ativo / Bloco</p>
+<div class="div-buttons">
+  <button
+    mat-stroked-button
+    color="accent"
+    class="btn-outline"
+    (click)="addNotificacaoToFormArray()">
+    <mat-icon>notification_add</mat-icon>Adicionar notificação
+  </button>
+</div>
+
+<div [formGroup]="perfilForm">
+  <div formArrayName="notificacoes">
+    <div *ngFor="let notificacao of notificacoesFA.controls; let i = index">
+      <div class="notificacao" [formGroupName]="i">
+        <div class="form-notificacao">
+          <input-tipo-formulario
+            formControlName="tipoFormulario"></input-tipo-formulario>
+
+          <mat-form-field>
+            <mat-label>Periodicidade</mat-label>
+            <mat-select formControlName="periodicidade">
+              <mat-option
+                *ngFor="let key of periodicidades"
+                [value]="periodicidadeEnum[key]">
+                {{ key }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="div-tipo-alarme">
+            <p>Tipo e alarme</p>
+            <div class="checkboxs-tipo-alarme">
+              <mat-checkbox formControlName="alarmEmail">Email</mat-checkbox>
+              <mat-checkbox formControlName="alarmPopUp"
+                >Pop-up no sistema</mat-checkbox
+              >
+            </div>
+          </div>
+
+          <mat-form-field class="ff-status">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status" multiple>
+              <mat-select-trigger>
+                @if (statusFC(i).value?.length > 0) {
+                  <span class="chip-qtd-selected">
+                    {{ statusFC(i).value?.length }}
+                    {{
+                      statusFC(i).value?.length > 1
+                        ? 'selecionados'
+                        : 'selecionado'
+                    }}
+                  </span>
+                  <button matSuffix (click)="removeAllStatus(i, $event)">
+                    <mat-icon
+                      style="font-size: 16px; height: 16px; margin-left: 1rem"
+                      >close</mat-icon
+                    >
+                  </button>
+                }
+              </mat-select-trigger>
+              <mat-option
+                *ngFor="let key of listaStatus"
+                [value]="statusEnum[key]">
+                {{ key }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <select-criado-por
+            formControlName="criadoPor"
+            [siglaFormulario]="siglaForm(i)">
+          </select-criado-por>
+
+          <button mat-icon-button (click)="removeNotificacaoFormArray(i)"
+            ><mat-icon>delete_outline</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<section id="home">
+  <div class="grid">
+    <div class="item span-5" id="first-column">
+      <h1 class="home-title">Bem vindo(a) ao sistema!</h1>
+      <div class="img-home">
+        <img src="../../../../assets/img/colaboradoras.jpg" alt="" />
+      </div>
+    </div>
+    <div class="item span-2">
+      <div class="link-container">
+        <H4 class="link-container-title">Administração</H4>
+        <a class="link" [routerLink]="['/perfis']">Buscar perfis de usuário</a>
+        <a class="link" [routerLink]="['/perfis/cadastro']">Cadastrar perfil</a>
+      </div>
+      <div class="link-container">
+        <H4 class="link-container-title">Gerenciamento</H4>
+        <a class="link">Exemplo Página</a>
+        <a class="link">Exemplo Página</a>
+        <a class="link">Exemplo Página</a>
+        <a class="link">Exemplo Página</a>
+      </div>
+    </div>
+    <div class="item span-2">
+      <div class="link-container">
+        <H4 class="link-container-title">Formulários</H4>
+        <a class="link" [routerLink]="['/formularios']">Buscar formulários</a>
+        <a class="link">Cadastrar formulários</a>
+      </div>
+      <div class="link-container">
+        <H4 class="link-container-title">Cadastro</H4>
+        <a class="link">Exemplo Página</a>
+        <a class="link">Exemplo Página</a>
+        <a class="link">Exemplo Página</a>
+      </div>
+    </div>
+
+    <div class="item span-2">
+      <div class="link-container">
+        <H4 class="link-container-title">Demonstração</H4>
+        <a class="link" [routerLink]="['/welcome']">Área do usuário</a>
+        <a class="link" [routerLink]="['/chart']">Gráfico</a>
+        <a class="link" [routerLink]="['/checkpoint']">Checkpoint</a>
+        <a class="link" [routerLink]="['/premissas']">Premissas</a>
+        <a class="link" [routerLink]="['/not-found']">Not found</a>
+        <a class="link" [routerLink]="['/unauthorized']">Não autorizado</a>
+      </div>
+    </div>
+  </div>
+</section>

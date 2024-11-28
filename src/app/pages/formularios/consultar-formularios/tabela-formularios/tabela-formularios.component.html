@@ -1,0 +1,210 @@
+<form id="filter-table">
+  <mat-form-field id="input-search-table" appearance="outline">
+    <mat-icon matPrefix>search</mat-icon>
+    <input
+      type="text"
+      matInput
+      (keyup)="applyFilter($event)"
+      [formControl]="searchTableFC"
+      placeholder="Procurar na tabela"
+    />
+  </mat-form-field>
+
+  <div id="buttons-bar">
+    <button mat-button #filterButton (click)="openFiltroResultados()"
+      ><mat-icon svgIcon="filter"></mat-icon> Filtro de resultados</button
+    >
+    <button mat-button> <mat-icon svgIcon="arrows"></mat-icon>Ordenar</button>
+    <button mat-button><mat-icon svgIcon="action"></mat-icon>Gerenciar</button>
+  </div>
+</form>
+
+<ng-container *ngIf="isFiltroResultadosOpen">
+  <div id="filtroDeResultados" class="filtro-resultados">
+    <div class="filtro-header">
+      <p>Filtro de resultado</p>
+      <button mat-button (click)="closeFiltroResultados()"><mat-icon>close</mat-icon></button>
+    </div>
+    <filtro-de-resultado></filtro-de-resultado>
+  </div>
+</ng-container>
+
+<table
+  mat-table
+  [dataSource]="dataSource"
+  id="tabela-formularios"
+  *ngIf="dataSource"
+  matSort
+  matSortActive="situacaoArquivo"
+  matSortDirection="asc"
+  matSortDisableClear
+  (matSortChange)="sortData($event)"
+>
+  <ng-container matColumnDef="checkbox">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (click)="toggleCheckAllRows(!checkAll)" [ngModel]="checkAll"></mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let formulario; let i = index" [ngClass]="{ 'td-checked': formulario.isChecked }">
+      <mat-checkbox
+        (click)="$event.stopPropagation()"
+        (change)="toggleCheckBox(formulario)"
+        [checked]="formulario.isChecked"
+      ></mat-checkbox>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="tipoDoFormulario">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
+    <td mat-cell *matCellDef="let formulario" [ngClass]="{ 'td-checked': formulario.isChecked }">
+      <p class="p-tipo-formulario">{{ formulario.tipoDoFormulario }}</p>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nomeDoArquivo">
+    <th mat-header-cell *matHeaderCellDef>Nome do Arquivo</th>
+    <td mat-cell *matCellDef="let formulario" [ngClass]="{ 'td-checked': formulario.isChecked }">
+      {{ formulario.nomeDoArquivo }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="editorChave">
+    <th mat-header-cell *matHeaderCellDef>Editor</th>
+    <td mat-cell *matCellDef="let formulario" [ngClass]="{ 'td-checked': formulario.isChecked }">
+      {{ formulario.editorChave }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="orgao">
+    <th mat-header-cell *matHeaderCellDef>Órgao</th>
+    <td mat-cell *matCellDef="let formulario" [ngClass]="{ 'td-checked': formulario.isChecked }">
+      {{ formulario.orgao }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dataCriacao">
+    <th mat-header-cell *matHeaderCellDef>Criação</th>
+    <td mat-cell *matCellDef="let formulario" [ngClass]="{ 'td-checked': formulario.isChecked }">
+      {{ formulario.dataCriacao | date: 'dd/MM/yyyy' }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dataEnvio">
+    <th mat-header-cell *matHeaderCellDef>Envio</th>
+    <td mat-cell *matCellDef="let formulario" [ngClass]="{ 'td-checked': formulario.isChecked }">
+      {{ formulario.dataEnvio | date: 'dd/MM/yyyy' }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="situacaoArquivo">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Situacao</th>
+    <td mat-cell *matCellDef="let formulario" [ngClass]="{ 'td-checked': formulario.isChecked }">
+      <p class="situacao">{{ formulario.situacaoArquivo }}</p>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nomePoco">
+    <th mat-header-cell *matHeaderCellDef>Nome do Poço</th>
+    <td mat-cell *matCellDef="let formulario" [ngClass]="{ 'td-checked': formulario.isChecked }">
+      {{ formulario.nomePoco }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="responsavel">
+    <th mat-header-cell *matHeaderCellDef>Responsável</th>
+    <td mat-cell *matCellDef="let formulario" [ngClass]="{ 'td-checked': formulario.isChecked }">
+      <p class="responsavel">
+        <mat-icon svgIcon="user-avatar" class="icon-user-avatar"></mat-icon>
+        {{ formulario.responsavel }}</p
+      >
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="more" class="more-container">
+    <th mat-header-cell *matHeaderCellDef class="more-header">
+      <button [matMenuTriggerFor]="moreHeaderMenu" [matMenuTriggerData]="{ dataSource }">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </th>
+    <td mat-cell *matCellDef="let formulario" class="more-cell" [ngClass]="{ 'td-checked': formulario.isChecked }">
+      <button [matMenuTriggerFor]="moreMenu" [matMenuTriggerData]="{ formulario }">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- SubMenu More for header -->
+  <mat-menu #moreHeaderMenu="matMenu">
+    <ng-template matMenuContent let-formulario="formulario">
+      <button mat-menu-item (click)="openConfirmarDownloadModal()">
+        <span>Baixar todos da página</span>
+        <mat-icon>download</mat-icon>
+      </button>
+      <button mat-menu-item (click)="openConfirmarDownloadModal()">
+        <span>Baixar selecionados</span>
+        <mat-icon>download</mat-icon>
+      </button>
+      <button mat-menu-item>
+        <span>Arquivo ZIP</span>
+        <mat-icon>folder_zip</mat-icon>
+      </button>
+      <button mat-menu-item>
+        <span>Log</span>
+        <mat-icon>history</mat-icon>
+      </button>
+      <button mat-menu-item>
+        <span>Informação ANP</span>
+        <mat-icon>info_outline</mat-icon>
+      </button>
+      <button mat-menu-item>
+        <span>Notificar por e-mail</span>
+        <mat-icon>email</mat-icon>
+      </button>
+    </ng-template>
+  </mat-menu>
+
+  <!-- SubMenu More for one item -->
+  <mat-menu #moreMenu="matMenu">
+    <ng-template matMenuContent let-user="user">
+      <button mat-menu-item (click)="openConfirmarDownloadModal()">
+        <span>Baixar</span>
+        <mat-icon>download</mat-icon>
+      </button>
+      <button mat-menu-item>
+        <span>Arquivo ZIP</span>
+        <mat-icon>folder_zip</mat-icon>
+      </button>
+      <button mat-menu-item>
+        <span>Log</span>
+        <mat-icon>history</mat-icon>
+      </button>
+      <button mat-menu-item>
+        <span>Informação ANP</span>
+        <mat-icon>info_outline</mat-icon>
+      </button>
+      <button mat-menu-item>
+        <span>Notificar por e-mail</span>
+        <mat-icon>email</mat-icon>
+      </button>
+    </ng-template>
+  </mat-menu>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell busca-vazia" [attr.colspan]="displayedColumns.length"
+      >Nenhum dado encontrado na tabela para "<span>{{ searchTableFC.value }}</span
+      >"</td
+    >
+  </tr>
+</table>
+<mat-paginator
+  [length]="pageOfListaFormularioResumo.totalItems"
+  [pageSize]="pageOfListaFormularioResumo.pageSize"
+  aria-label="Select page"
+  [hidePageSize]="false"
+  [pageIndex]="pageOfListaFormularioResumo.currentPage"
+  [showFirstLastButtons]="true"
+  (page)="paginatorChange($event)"
+>
+</mat-paginator>

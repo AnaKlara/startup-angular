@@ -1,0 +1,33 @@
+@function parseInt($n) {
+  @return calc($n / ($n * 0 + 1));
+}
+
+@mixin px-to-rem($pxValue, $property: 'font-size') {
+  #{$property}: calc(parseInt($pxValue) / 16) + rem;
+}
+
+@mixin filter-color($color: #000, $opacity: 1) {
+  $r: calc(red($color) / 255);
+  $g: calc(green($color) / 255);
+  $b: calc(blue($color) / 255);
+  $a: $opacity;
+
+  // grayscale fallback if SVG from data url is not supported
+  $lightness: lightness($color);
+  filter: saturate(0%) brightness(0%) invert($lightness) opacity($opacity);
+
+  // color filter
+  $svg-filter-id: 'recolor';
+  filter: url('data:image/svg+xml;utf8,\
+    <svg xmlns="http://www.w3.org/2000/svg">\
+      <filter id="#{$svg-filter-id}" color-interpolation-filters="sRGB">\
+        <feColorMatrix type="matrix" values="\
+          0 0 0 0 #{$r}\
+          0 0 0 0 #{$g}\
+          0 0 0 0 #{$b}\
+          0 0 0 #{$a} 0\
+        "/>\
+      </filter>\
+    </svg>\
+    ##{$svg-filter-id}');
+}

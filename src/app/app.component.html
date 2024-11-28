@@ -1,0 +1,7 @@
+<app-header></app-header>
+<sidenav></sidenav>
+<section class="app">
+  <router-outlet></router-outlet>
+  <app-loading-overlay *ngIf="loading"></app-loading-overlay>
+</section>
+<app-footer></app-footer>

@@ -1,0 +1,24 @@
+.mat-mdc-text-field-wrapper,
+.mdc-text-field,
+.mdc-text-field--filled,
+.mdc-text-field--no-label {
+  background-color: #fff !important;
+}
+
+.mat-datepicker-input,
+.mat-mdc-input-element,
+.mat-mdc-form-field-input-control,
+.mdc-text-field__input {
+  font-size: 14px !important;
+  line-height: 20px !important;
+  font-weight: 400 !important;
+}
+
+.mat-mdc-text-field-wrapper,
+.mdc-text-field,
+.mdc-text-field--filled,
+.mdc-text-field--no-label {
+  padding: 0px !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+}

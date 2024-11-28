@@ -1,0 +1,98 @@
+$white: #ffffff;
+$neutral-0: #ffffff;
+$neutral-1: #f8f9fa;
+$neutral-2: #f1f3f5;
+$neutral-3: #e9ecef;
+$neutral-4: #dee2e6;
+$neutral-5: #ced4da;
+$neutral-6: #adb5bd;
+$neutral-7: #6a7178;
+$neutral-8: #4f575e;
+$neutral-9: #272b30;
+$neutral-10: #101213;
+
+$info-base: #00b2a9;
+$info-light: #bfecea;
+
+$success-base: #40a471;
+$success-light: #bfe1d0;
+
+$warning-base: #fed663;
+$warning-light: #fff1cb;
+
+$error-base: #ed1d24;
+$error-light: #faeaea;
+
+@function dynamic-colors-variables($theme) {
+  @if $theme == 'yellow' {
+    @return (
+      'primary-color': #ecb02b,
+      'primary-lightest': #fff1cb,
+      'primary-lighter': #fee497,
+      'primary-light': #fed663,
+      'primary-dark': #be9623,
+      'primary-darker': #7f6418,
+      'primary-darkest': #875700,
+      'secondary-color': #008542,
+      'secondary-lightest': #bfe1d0,
+      'secondary-lighter': #80c2a1,
+      'secondary-light': #40a471,
+      'secondary-dark': #006432,
+      'secondary-darker': #004321,
+      'secondary-darkest': #002e17
+    );
+  } @else if $theme == 'green' {
+    @return (
+      'primary-color': #008542,
+      'primary-lightest': #bfe1d0,
+      'primary-lighter': #80c2a1,
+      'primary-light': #40a471,
+      'primary-dark': #006432,
+      'primary-darker': #004321,
+      'primary-darkest': #002e17,
+      'secondary-color': #ecb02b,
+      'secondary-lightest': #fff1cb,
+      'secondary-lighter': #fee497,
+      'secondary-light': #fed663,
+      'secondary-dark': #be9623,
+      'secondary-darker': #7f6418,
+      'secondary-darkest': #875700
+    );
+  } @else if $theme == 'ocean' {
+    @return (
+      'primary-color': #030820,
+      'primary-lightest': #4f5366,
+      'primary-lighter': #2a2e45,
+      'primary-light': #040924,
+      'primary-dark': #03061b,
+      'primary-darker': #020516,
+      'primary-darkest': #01020d,
+      'secondary-color': #008542,
+      'secondary-lightest': #bfe1d0,
+      'secondary-lighter': #80c2a1,
+      'secondary-light': #40a471,
+      'secondary-dark': #006432,
+      'secondary-darker': #004321,
+      'secondary-darkest': #002e17
+    );
+  } @else {
+    @error "Invalid theme: #{$theme} is not supported.";
+  }
+}
+
+$colors: dynamic-colors-variables($global-color-theme);
+$primary-color: map-get($colors, 'primary-color');
+$primary-lightest: map-get($colors, 'primary-lightest');
+$primary-lighter: map-get($colors, 'primary-lighter');
+$primary-light: map-get($colors, 'primary-light');
+$primary-dark: map-get($colors, 'primary-dark');
+$primary-darker: map-get($colors, 'primary-darker');
+$primary-darkest: map-get($colors, 'primary-darkest');
+
+$secondary-color: map-get($colors, 'secondary-color');
+$secondary-lightest: map-get($colors, 'secondary-lightest');
+$secondary-lighter: map-get($colors, 'secondary-lighter');
+$secondary-light: map-get($colors, 'secondary-light');
+$secondary-dark: map-get($colors, 'secondary-dark');
+$secondary-darker: map-get($colors, 'secondary-darker');
+$secondary-darkest: map-get($colors, 'secondary-darkest');

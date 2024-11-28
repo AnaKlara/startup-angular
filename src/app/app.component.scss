@@ -1,0 +1,15 @@
+@import '../styles.scss';
+:host {
+  .app {
+    position: absolute;
+    $sidenav-height: 3rem;
+    top: $sidenav-height;
+    left: 0rem;
+    $footer-and-header-height: 6rem;
+    width: 100%;
+    height: calc(100% - $footer-and-header-height);
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: $neutral-3;
+  }
+}

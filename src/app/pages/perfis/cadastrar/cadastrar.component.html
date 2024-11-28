@@ -1,0 +1,85 @@
+<breadcrumb [breadcrumbs]="breadcrumbItems"></breadcrumb>
+<section id="cadastro-perfil">
+  <div class="header-cadastro">
+    <div>
+      <p class="title">Cadastrar perfil</p>
+      <mat-form-field class="autocomplete-usuario" appearance="outline">
+        <mat-label>Usuario</mat-label>
+        <input
+          type="text"
+          placeholder="Digite e pesquise"
+          matInput
+          [matAutocomplete]="auto"
+          [(ngModel)]="inputAutocomplete"
+          (ngModelChange)="onSearch($event)"
+          [ngModelOptions]="{ standalone: true }" />
+        @if (autocompleteUsuarioloading) {
+          <button matSuffix mat-icon-button>
+            <img
+              matSuffix
+              src="../../../../assets/img/loading-spinner.svg"
+              width="1rem" />
+          </button>
+        }
+        <mat-hint *ngIf="usuarioResumo">{{ usuarioResumo.lotacao }}</mat-hint>
+        <mat-autocomplete
+          #auto="matAutocomplete"
+          (optionSelected)="autocompleteSelectionChange($event)"
+          [displayWith]="displayFn">
+          @if (autocompleteUsuarioOptions) {
+            @for (option of autocompleteUsuarioOptions; track option) {
+              <mat-option [value]="option"
+                >{{ option.chave }} - {{ option.nome }}</mat-option
+              >
+            }
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div class="div-buttons">
+      <button mat-button (click)="cancelarCadastro()">Cancelar</button>
+      <button
+        mat-flat-button
+        color="accent"
+        class="btn-salvar"
+        [disabled]="!chavePerfil"
+        (click)="salvarFormulario()">
+        <mat-icon style="font-size: 18px; height: 18px">save</mat-icon>
+        Salvar</button
+      >
+    </div>
+  </div>
+</section>
+
+<section id="formulario-perfil" *ngIf="!!chavePerfil">
+  <form [formGroup]="perfilForm" class="perfil-form">
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab label="Permissões">
+        <div class="perfil-sede-container">
+          <mat-slide-toggle class="perfil-sede" formControlName="perfilSede">
+            Perfil Sede
+          </mat-slide-toggle>
+          <mat-form-field appearance="outline">
+            <mat-label>Tipo de Perfil</mat-label>
+            <mat-select formControlName="tipoPerfil">
+              @for (tipo of tiposPerfis; track tipo) {
+                <mat-option [value]="tipo.value">{{ tipo.label }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <input-lista-permissao
+          [permissoes]="perfilForm.get('permissoes')"></input-lista-permissao>
+      </mat-tab>
+      <mat-tab label="Notificações">
+        <div id="tab-notificacoes">
+          @if (perfilForm) {
+            <input-lista-notificacao
+              [perfilForm]="perfilForm"></input-lista-notificacao>
+          }
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </form>
+</section>

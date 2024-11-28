@@ -1,0 +1,187 @@
+@import '../../../../styles.scss';
+
+:host {
+  #header-editar-perfil {
+    background-color: $white;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    .user-info {
+      display: flex;
+
+      .name-abreviation-circle {
+        width: 56px;
+        height: 56px;
+        background-color: $secondary-color;
+        color: $white;
+        border-radius: 56px;
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .name-lot {
+        margin-left: 1rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        .p-lot {
+          color: #6a7178;
+          font-size: 12px;
+        }
+        .p-name {
+          margin-top: 4px;
+          font-size: 20px;
+          color: #161616;
+        }
+      }
+      .chip-chave {
+        padding: 2px 8px;
+        margin-left: 1rem;
+        background-color: #333333;
+        color: $white;
+        border-radius: 32px;
+        height: 24px;
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-self: flex-end;
+        margin-bottom: 10px;
+      }
+    }
+
+    .user-action-buttons {
+      .btn-cancelar {
+        margin-right: 1rem;
+      }
+      .button {
+        position: relative;
+        height: 36px;
+        background-color: $secondary-color;
+        color: white;
+        vertical-align: bottom;
+      }
+      .button:hover {
+        background-color: $secondary-dark;
+      }
+      .button-editar,
+      .justificar {
+        padding: 10px 1rem;
+        border-right: 1px solid $white;
+        border-radius: 8px 0px 0px 8px;
+        .icon {
+          font-size: 16px;
+          margin-right: 4px;
+        }
+        .btn-title {
+          position: relative;
+          display: inline-flex;
+          bottom: 10px;
+          font-size: 14px;
+          line-height: 16px;
+          font-weight: 700;
+          vertical-align: -webkit-baseline-middle;
+        }
+      }
+      .button-menu-trigger {
+        width: 2rem;
+        padding: 8px 6px;
+        border-radius: 0px 8px 8px 0px;
+        .icon {
+          font-size: 20px;
+          height: 20px;
+          width: 20px;
+        }
+      }
+    }
+  }
+  #formulario-perfil {
+    padding: 1.5rem;
+    .perfil-form {
+      background-color: $white;
+    }
+
+    .perfil-sede-container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 1.5rem 1rem 1rem 1rem;
+      border-bottom: 8px solid #f4f4f4;
+      height: 108px;
+      align-items: baseline;
+      .perfil-sede {
+        margin-right: 1rem;
+      }
+    }
+    .permissao-orgao-ativo-bloco {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      background-color: $white;
+      padding: 1rem;
+      .permissao-title {
+        color: #191919;
+        font-weight: 700;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 16px;
+      }
+      .combo-select {
+        display: flex;
+        margin-top: 1rem;
+        // margin-bottom: 1rem;
+        .autocomplete-tipo {
+          width: 26rem;
+          margin-left: 1rem;
+        }
+      }
+
+      .form-dinamico {
+        .form-dinamico-item {
+          border: 1px solid #f2f2f2;
+          display: flex;
+          flex-direction: row;
+          padding: 1rem;
+          justify-content: space-between;
+          align-items: center;
+          .div-inputs {
+            display: flex;
+            .form-dinamico-item-nome-div {
+              display: flex;
+              flex-direction: column;
+              width: 16rem;
+              align-self: center;
+              h3 {
+                display: inline-flex;
+                color: #525252;
+                font-size: 12px;
+              }
+              h4 {
+                margin-top: 0.5rem;
+                display: inline-flex;
+                color: #161616;
+                font-size: 14px;
+              }
+            }
+            .hide-subscript {
+              margin-bottom: -1.25em;
+            }
+          }
+          .icon-trash {
+            color: #666666;
+          }
+        }
+        .form-dinamico-item:not(:first-of-type) {
+          margin-top: 0.5rem;
+        }
+      }
+    }
+    #tab-notificacoes {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 1.5rem 1rem 1rem 1rem;
+      flex-direction: column;
+    }
+  }
+}

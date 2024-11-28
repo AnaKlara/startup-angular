@@ -1,0 +1,14 @@
+<div id="div-panel">
+  <div class="panel-header">
+    <div class="text">
+      <h1>{{ title }}</h1>
+      <h2>{{ subtitle }}</h2>
+    </div>
+    <div class="panel-buttons">
+      <ng-container *ngTemplateOutlet="buttonsTemplate"></ng-container>
+    </div>
+  </div>
+  <div class="panel-content">
+    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+  </div>
+</div>

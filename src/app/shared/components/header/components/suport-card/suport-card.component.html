@@ -1,0 +1,20 @@
+<div class="floating-div" [ngClass]="{ hidden: !isVisible, visible: isVisible }">
+  <div class="header">
+    <h1>Suporte Técnico</h1>
+    <button class="button-sair" (click)="toggleSuportCardDiv()">
+      <img src="../../../../../../../assets/icons/close.svg" alt="" />
+    </button>
+  </div>
+  <div class="content">
+    <div>
+      <img class="suport-icon" src="../../../../../../../assets/icons/phone.svg" alt="" />
+      <p>Suporte técnico 24 horas: <span class="strong">&emsp; 0800 881-0881</span></p>
+    </div>
+    <div style="margin-top: 1rem">
+      <p>
+        Para dúvidas, reclamações, ou solicitações de perfil, enviar e-mail para
+        <span class="strong">sistemas.anpweb&#64;.com.br</span> &emsp; (R01A)</p
+      >
+    </div>
+  </div>
+</div>

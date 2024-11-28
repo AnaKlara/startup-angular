@@ -1,0 +1,17 @@
+<div
+  class="upload-area"
+  (dragover)="onDragOver($event)"
+  (dragleave)="onDragLeave($event)"
+  (drop)="onFileSelected($event)"
+  [class.active]="isDragOver">
+  <p>
+    <mat-icon>attachment</mat-icon>
+    @if (!isDragOver) {
+      Arraste e solte os arquivos aqui
+    }
+    @if (isDragOver) {
+      Solte
+    }
+  </p>
+  <input type="file" #fileInput accept=".jpg,.png" />
+</div>

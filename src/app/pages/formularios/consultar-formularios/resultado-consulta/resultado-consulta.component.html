@@ -1,0 +1,19 @@
+<section id="resultado">
+  <div id="resultado-container">
+    <div class="header">
+      <h1 class="title">Resultado da consulta:</h1>
+      <p class="p-total">{{ PageOfListaFormularioResumo.totalItems }} resultados encontrados</p>
+    </div>
+    <div id="tags-container">
+      <p class="tag">Formulário = 1-QB</p>
+      <p class="tag">Formulário = INST</p>
+      <p class="tag">Formulário = U3Tw</p>
+    </div>
+    <div id="tabela-container">
+      <tabela-formularios
+        [PageOfListaFormularioResumo]="PageOfListaFormularioResumo"
+        [FiltroListaFormularioResumo]="FiltroListaFormularioResumo"
+      ></tabela-formularios>
+    </div>
+  </div>
+</section>

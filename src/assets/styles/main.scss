@@ -1,0 +1,25 @@
+@import 'reset.scss';
+@import './theme.scss';
+
+// Material Design Overrides
+@import './material-design-override/material-theme.scss';
+@import './material-design-override/components/overrides.scss';
+
+// Custom styles
+@import 'colors.scss';
+@import 'variables.scss';
+@import 'fonts.scss';
+@import 'z-index.scss';
+@import 'toast.scss';
+@import 'utils.scss';
+// @import 'sizes.scss';
+// @import 'columns.scss';
+// @import 'grid.scss';
+@import './components/buttons.scss';
+@import './components/scroll.scss';
+
+$standard-size: 16;
+
+body {
+  overflow: hidden;
+}

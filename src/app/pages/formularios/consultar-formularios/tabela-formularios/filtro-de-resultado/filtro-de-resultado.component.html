@@ -1,0 +1,71 @@
+<div class="filtros">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Tipo de formulário</mat-label>
+    <mat-select [(ngModel)]="selectedCarValue" name="car">
+      @for (car of cars; track car) {
+        <mat-option [value]="car.value">{{ car.viewValue }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Editor</mat-label>
+    <mat-select [(ngModel)]="selectedFoodValue" name="food">
+      @for (food of foods; track food) {
+        <mat-option [value]="food.value">{{ food.viewValue }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Órgão</mat-label>
+    <mat-select [(ngModel)]="selectedOrgaoValue" name="orgao">
+      @for (orgao of orgaos; track orgao) {
+        <mat-option [value]="orgao.value">{{ orgao.viewValue }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Data de criação</mat-label>
+    <input matInput [matDatepicker]="picker" />
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Data de envio</mat-label>
+    <input matInput [matDatepicker]="picker2" />
+    <mat-datepicker-toggle
+      matIconSuffix
+      [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Situação</mat-label>
+    <mat-select [(ngModel)]="selectedSituacaoValue" name="situacao">
+      @for (situacao of situacoes; track situacao) {
+        <mat-option [value]="situacao.value">{{
+          situacao.viewValue
+        }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Poço Nome BR</mat-label>
+    <mat-select [(ngModel)]="selectedPocoValue" name="poco">
+      @for (poco of pocos; track poco) {
+        <mat-option [value]="poco.value">{{ poco.viewValue }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <div class="buttons">
+    <button mat-button><mat-icon>filter_alt_off</mat-icon>Limpar</button>
+    <button
+      mat-flat-button
+      color="accent"
+      style="color: white; margin-left: 1rem"
+      >Aplicar filtros</button
+    >
+  </div>
+</div>

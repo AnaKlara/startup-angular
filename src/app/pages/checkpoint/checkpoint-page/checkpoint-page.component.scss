@@ -1,0 +1,79 @@
+.landing-page {
+  background-color: #e0e0e0;
+  min-height: calc(100% - 6rem);
+  padding: 32px 32px;
+}
+
+.title-container {
+  text-align: start;
+  background-color: #ffffff;
+  padding: 16px 0px 24px 16px;
+}
+
+.title-text {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: #161616;
+}
+
+.description-text {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.28572;
+  letter-spacing: 0.16px;
+  color: #525252;
+  display: block;
+  margin-top: 5px;
+  /* Add spacing between title and description */
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+  margin-top: -21px;
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  background-color: whitesmoke;
+}
+
+.icon-label-container {
+  margin-right: 8px;
+}
+
+.menu-button {
+  align-items: center;
+  background-color: inherit;
+}
+
+.custom-header {
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+  background-color: #e0e0e0;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.no-data-cell {
+  text-align: center;
+  background-color: whitesmoke;
+  color: black;
+  font-size: 1.2em;
+}
+
+.no-data-message {
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}

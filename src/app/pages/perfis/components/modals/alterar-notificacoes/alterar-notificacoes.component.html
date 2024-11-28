@@ -1,0 +1,29 @@
+<div class="modal">
+  <div class="modal-header">
+    <h1>Notificação</h1>
+    <button (click)="closeModal()">
+      <img src="../../../../../../assets/icons/close.svg" width="20" />
+    </button>
+  </div>
+  <div class="content">
+    <div class="banner">
+      <mat-icon style="font-size: 20px">info</mat-icon>
+      As alterações realizadas aqui sobrepõem as notificações atuais. Esta ação
+      não pode ser desfeita!
+    </div>
+
+    <div id="tab-notificacoes">
+      @if (perfilForm) {
+        <input-lista-notificacao
+          [perfilForm]="perfilForm"></input-lista-notificacao>
+      }
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button mat-flat-button color="accent" (click)="confirmar()" class="btn">
+      <mat-icon class="modal-footer-icon">save</mat-icon>
+      Confirmar
+    </button>
+    <button mat-button (click)="cancelar()"> Cancelar </button>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="modal">
+  <div class="modal-header">
+    <h1>Justificativa de alteração</h1>
+    <button (click)="closeModal()">
+      <img src="../../../../../../assets/icons/close.svg" width="20" />
+    </button>
+  </div>
+  <div class="content" [formGroup]="justificativa">
+    <p class="p-guidelines add-margin-b">
+      Por que foi feita essa alteração? Caso necessário, adicione anexos para
+      apoiar a justificativa.
+    </p>
+    <mat-form-field appearance="outline" class="text-area add-margin-b">
+      <mat-label>Adicionar comentário</mat-label>
+      <textarea matInput formControlName="comentario" rows="4"></textarea>
+      <mat-hint align="start">{{ comentarioLenth }}/500</mat-hint>
+    </mat-form-field>
+
+    <p class="p-guidelines add-bold"> Anexos </p>
+    <p class="p-guidelines add-margin-b">
+      Tamanho máximo do arquivo é de 500 KB. Tipos de arquivo suportados são
+      .jpg e .png.
+    </p>
+    <uploadable-area
+      formControlName="anexos"
+      class="add-margin-b"></uploadable-area>
+    @for (anexo of anexosFormValue; track $index) {
+      <div class="anexo">
+        <div>
+          <mat-icon class="icon icon-attachment">attachment</mat-icon>
+          <p>{{ anexo }}</p>
+        </div>
+        <button (click)="removerAnexo($index)">
+          <mat-icon class="icon">delete</mat-icon>
+        </button>
+      </div>
+    }
+  </div>
+  <div class="modal-footer">
+    <button mat-flat-button color="accent" (click)="confirmar()" class="btn">
+      <mat-icon class="modal-footer-icon">admin_panel_settings</mat-icon>
+      Enviar justificativa
+    </button>
+    <button mat-button (click)="cancelar()"> Cancelar </button>
+  </div>
+</div>

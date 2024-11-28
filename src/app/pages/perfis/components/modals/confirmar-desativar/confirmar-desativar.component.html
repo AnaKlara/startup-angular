@@ -1,0 +1,24 @@
+<div class="modal">
+  <div class="desativar-perfil-header">
+    <h1>Desativar</h1>
+    <button (click)="closeModal()">
+      <img src="../../../../../../assets/icons/close.svg" width="20" />
+    </button>
+  </div>
+  <div class="content">
+    <div class="desativar-perfil-banner">
+      <mat-icon style="font-size: 20px">info</mat-icon>
+      Os usuários perderão o acesso a todas as áreas do sistema.</div
+    >
+    <div class="desativar-perfil-info"
+      >É possível reativar os usuários novamente, mas as configurações de permissão e notificação não são
+      recuperadas.</div
+    >
+    <div class="desativar-perfil-footer">
+      <button mat-button (click)="cancelarDesativar()">Cancelar</button>
+      <button mat-flat-button color="warn" (click)="confirmarDesativar()"
+        ><mat-icon>person_off</mat-icon>Desativar</button
+      >
+    </div>
+  </div>
+</div>

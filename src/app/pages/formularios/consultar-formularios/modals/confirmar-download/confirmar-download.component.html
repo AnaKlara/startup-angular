@@ -1,0 +1,18 @@
+<div class="modal">
+  <div class="header">
+    <h1>Quantidade de arquivos</h1>
+    <button (click)="closeModal()">
+      <img src="../../../../../../assets/icons/close.svg" width="20" />
+    </button>
+  </div>
+
+  <span class="info"
+    >Foram selecionar mais de 100 arquivos, o tempo para iniciar o download poderá demorar alguns minutos. Deseja
+    continuar?</span
+  >
+
+  <div class="footer">
+    <button class="cancelar" (click)="cancelarDownload()">Cancelar</button>
+    <button class="confirmar" (click)="confirmarDownload()">Continuar </button>
+  </div>
+</div>

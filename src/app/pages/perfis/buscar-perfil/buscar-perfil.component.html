@@ -1,0 +1,179 @@
+<breadcrumb [breadcrumbs]="breadcrumbItems"></breadcrumb>
+
+<div id="consultar-perfis">
+  <div class="header">
+    <h1>Consulta de Perfis</h1>
+    <button
+      id="button-cadastrar"
+      (click)="this.router.navigate(['perfis/cadastro'])">
+      <mat-icon matRipple class="cadastrar-icone">person_add</mat-icon>
+      Cadastrar usuário
+    </button>
+  </div>
+
+  <div class="filtros" [formGroup]="filtrosConsultaListaDePerfis">
+    <div class="div-inputs" formGroupName="filters">
+      <div class="first-row">
+        <mat-form-field class="search-form-field" appearance="outline">
+          <mat-icon
+            matTextPrefix
+            style="font-size: 18px; vertical-align: top; color: #666666"
+            >search</mat-icon
+          >
+          <input
+            matInput
+            type="text"
+            formControlName="search"
+            placeholder="Chave ou nome do usuário"
+            autocomplete="off"
+            maxlength="30"
+            [matAutocomplete]="auto" />
+          @if (loadingAutocomplete) {
+            <button matSuffix mat-icon-button>
+              <img
+                matSuffix
+                src="../../../../assets/img/loading-spinner.svg"
+                width="1rem" />
+            </button>
+          }
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            @if (!loadingAutocomplete) {
+              @for (option of perfilAutocompleteOptions; track option) {
+                <mat-option [value]="option.value">{{
+                  option.label
+                }}</mat-option>
+              }
+            }
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-slide-toggle formControlName="perfilSede" class="slide-toggle"
+          >Perfil Sede</mat-slide-toggle
+        >
+
+        <div class="toggle-group-container">
+          <p>Tipo de Perfil</p>
+          <div class="button-toggle-group">
+            <button-toggle
+              class="button-toggle"
+              (ngModelChange)="addTipoPerfilFilter('TODOS', $event)"
+              [(ngModel)]="todosTiposDePerfis"
+              [ngModelOptions]="{ standalone: true }"
+              label="Todos"></button-toggle>
+            <button-toggle
+              class="button-toggle"
+              [(ngModel)]="perfilAdm"
+              [ngModelOptions]="{ standalone: true }"
+              (ngModelChange)="addTipoPerfilFilter('ADMINISTRADOR', $event)"
+              label="Administrador"></button-toggle>
+            <button-toggle
+              class="button-toggle"
+              [(ngModel)]="perfilEmi"
+              [ngModelOptions]="{ standalone: true }"
+              (ngModelChange)="addTipoPerfilFilter('EMISSOR', $event)"
+              label="Emissor"></button-toggle>
+            <button-toggle
+              class="button-toggle"
+              [(ngModel)]="perfilEdt"
+              [ngModelOptions]="{ standalone: true }"
+              (ngModelChange)="addTipoPerfilFilter('EDITOR', $event)"
+              label="Editor"></button-toggle>
+            <button-toggle
+              class="button-toggle"
+              [(ngModel)]="perfilLeitor"
+              [ngModelOptions]="{ standalone: true }"
+              (ngModelChange)="addTipoPerfilFilter('LEITOR', $event)"
+              label="Leitor"></button-toggle>
+          </div>
+        </div>
+      </div>
+      <div>
+        <mat-form-field appearance="outline" class="select-lotacao">
+          <mat-label>Lotação</mat-label>
+          <mat-select formControlName="lotacao" multiple>
+            @for (lotacao of lotacaoOptions; track lotacao) {
+              <mat-option [value]="lotacao.value">{{
+                lotacao.label
+              }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="select-orgao">
+          <mat-label>Órgão</mat-label>
+          <mat-select formControlName="orgao" multiple>
+            @for (orgao of orgaoOptions; track orgao) {
+              <mat-option [value]="orgao.value">{{ orgao.label }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="select-formulario">
+          <mat-label>Formulário</mat-label>
+          <mat-select formControlName="formulario" multiple>
+            @for (formulario of formulariosOprtions; track formulario) {
+              <mat-option [value]="formulario.value">{{
+                formulario.label
+              }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="buttons">
+      <button
+        (click)="resetarFiltros()"
+        mat-button
+        color="primary"
+        [matTooltipPosition]="'above'"
+        matTooltip="Limpar filtros"
+        ><mat-icon>filter_alt_off</mat-icon></button
+      >
+      <button
+        mat-flat-button
+        color="accent"
+        class="button-consultar"
+        (click)="onConsultarButtonClick()"
+        ><mat-icon>search</mat-icon>Consultar</button
+      >
+    </div>
+  </div>
+</div>
+
+<mat-tab-group
+  mat-stretch-tabs="false"
+  mat-align-tabs="start"
+  id="div-tabs"
+  (selectedIndexChange)="novaTabSelecionada($event)">
+  <mat-tab label="Lista de Usuários">
+    <div
+      id="div-tabela-resultado"
+      *ngIf="
+        toggleShowTable &&
+        resultadoConsulta &&
+        resultadoConsulta.listaPerfisResumidos.length > 0
+      ">
+      <tabela-perfil
+        [paginaDeListaDePerfisResumidos]="resultadoConsulta"></tabela-perfil>
+    </div>
+    <div
+      id="div-tabela-resultado"
+      *ngIf="
+        resultadoConsulta && resultadoConsulta.listaPerfisResumidos.length === 0
+      ">
+      <div>
+        Nenhum resultado encontrado para o termo de busca "{{
+          resultadoConsulta.filters.search
+        }}"
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Solicitação Recebida">
+    @if (paginaListaDeSolicitacoes) {
+      <tabela-solicitacoes
+        [paginaDeListaDeSolicitacoesResumidas]="
+          paginaListaDeSolicitacoes
+        "></tabela-solicitacoes>
+    }
+  </mat-tab>
+</mat-tab-group>

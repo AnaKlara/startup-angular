@@ -1,0 +1,77 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../../assets/fonts/OpenSans-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../../assets/fonts/OpenSans-Bold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../../assets/fonts/OpenSans-BoldItalic.ttf');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../../assets/fonts/OpenSans-ExtraBold.ttf');
+  font-weight: bolder;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../../assets/fonts/OpenSans-ExtraBoldItalic.ttf');
+  font-weight: bolder;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../../assets/fonts/OpenSans-Light.ttf');
+  font-weight: lighter;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../../assets/fonts/OpenSans-LightItalic.ttf');
+  font-weight: lighter;
+  font-style: italic;
+}
+
+* {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+$display-small: 32px;
+$display-medium: 42px;
+$display-large: 54px;
+
+$headline-small: 24px;
+$headline-medium: 28px;
+$headline-large: 32px;
+
+$title-small: 20px;
+$title-medium: 24px;
+$title-large: 32px;
+
+$label-small: 12px;
+$label-medium: 16px;
+$label-large: 20px;
+
+$body-small: 16px;
+$body-medium: 20px;
+$body-large: 28px;
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;

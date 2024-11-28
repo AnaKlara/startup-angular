@@ -1,0 +1,83 @@
+@import '../../../../../styles.scss';
+
+:host {
+  .header-bar {
+    width: 100%;
+    height: 4.875rem;
+    background-color: $neutral-0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .search-solicitacoes-form-header {
+      margin-left: 1rem;
+      margin-top: 1rem;
+      width: 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .div-actions {
+      gap: 1rem;
+      align-items: center;
+      display: flex;
+      .chip-qtd-selected {
+        display: inline-flex;
+        align-items: center;
+        height: 24px;
+        border-radius: 32px;
+        padding: 0px 0.5rem;
+        background-color: #e6f6ec;
+        cursor: pointer;
+        p {
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 24px;
+          color: #008542;
+          margin-right: 0.5rem;
+        }
+        .icon-unselect {
+          font-size: 15px !important;
+          color: #008542 !important;
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+  }
+}
+
+.solicitacoes-table {
+  td {
+    vertical-align: middle;
+  }
+  .chave-cell {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    .button-chave-usuario {
+      cursor: pointer;
+      color: #008542;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 18px;
+    }
+  }
+
+  .nome-cell {
+    max-width: 15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .more-cell {
+    text-align: end;
+  }
+
+  .selected-row {
+    background-color: #c4e9d0;
+  }
+}

@@ -1,0 +1,235 @@
+<breadcrumb [breadcrumbs]="breadcrumbItems"></breadcrumb>
+<float-container
+  [toggleFloatContainerParentEvent]="
+    triggerEventToFloatContainer.asObservable()
+  "
+  [title]="'Log'">
+  <ng-template #content>
+    <cards-log-container
+      *ngIf="listaDelogsUsuario"
+      [listaDelogsUsuario]="listaDelogsUsuario"></cards-log-container>
+  </ng-template>
+</float-container>
+<ng-container *ngIf="perfilUsuario">
+  <section id="visualizar-header">
+    <div class="user-info">
+      <div class="name-abreviation-circle">{{
+        perfilUsuario.nome | nameAbreviation
+      }}</div>
+      <div class="name-lot">
+        <p class="p-lot">{{ perfilUsuario.lotacao }}</p>
+        <p class="p-name">{{ perfilUsuario.nome }}</p>
+      </div>
+      <p class="chip-chave">{{ perfilUsuario.chave }}</p>
+    </div>
+
+    <div class="user-action-buttons">
+      <button class="button-editar" (click)="redirectToEditar()">
+        <mat-icon [ngStyle]="{ 'font-size': '15px', 'margin-rigth': '4px' }"
+          >edit</mat-icon
+        >
+        <span>Editar</span>
+      </button>
+      <button
+        class="button-menu-trigger"
+        [matMenuTriggerFor]="menu"
+        (click)="isMatMenuOpen = true">
+        <mat-icon *ngIf="!isMatMenuOpen" [ngStyle]="{ 'font-size': '20px' }"
+          >keyboard_arrow_down</mat-icon
+        >
+        <mat-icon *ngIf="isMatMenuOpen" [ngStyle]="{ 'font-size': '20px' }"
+          >keyboard_arrow_up</mat-icon
+        >
+      </button>
+      <mat-menu #menu="matMenu" (closed)="isMatMenuOpen = false">
+        <button mat-menu-item (click)="redirectToClonar()">
+          <mat-icon>group</mat-icon>
+          <span>Clonar</span>
+        </button>
+        <button mat-menu-item (click)="visualizarLog()">
+          <mat-icon>history</mat-icon>
+          <span>Ver log</span>
+        </button>
+        <button
+          *ngIf="perfilUsuario.ativo"
+          mat-menu-item
+          (click)="openModalDesativarPerfil()">
+          <mat-icon>person_off</mat-icon>
+          <span>Desativar</span>
+        </button>
+        <button *ngIf="!perfilUsuario.ativo" mat-menu-item>
+          <mat-icon>person_off</mat-icon>
+          <span>Ativar</span>
+        </button>
+      </mat-menu>
+    </div>
+  </section>
+
+  <section id="visualizar-content">
+    <div class="tabs-container">
+      <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+        <mat-tab label="Permissões">
+          <div class="div-tipo-perfil">
+            <p class="p-tipo-perfil">Tipo de Perfil</p>
+            <p class="chip-tipo-perfil">{{
+              perfilUsuario.tipoPerfil | tipoPerfil
+            }}</p>
+          </div>
+          <div class="permissoes-container">
+            <h3 class="permissoes-title">Órgão / Ativo / Bloco</h3>
+            <ng-container *ngIf="perfilUsuario.permissoes?.orgaos">
+              <ng-container
+                *ngFor="
+                  let orgao of perfilUsuario.permissoes.orgaos;
+                  let i = index
+                ">
+                <div class="permissao">
+                  <div class="permissao-tipo">
+                    <p>Órgão</p>
+                    <p class="permissao-tipo-nome">{{ orgao.nome }}</p>
+                  </div>
+                  <div class="permissao-formularios-container">
+                    <p>Tipo de Formulário</p>
+                    <div class="chips-container">
+                      <ng-container
+                        *ngFor="let formulario of orgao.formularios">
+                        <p class="chip-formulario">{{ formulario.sigla }}</p>
+                      </ng-container>
+                    </div>
+                  </div>
+                  <div class="permissao-tipo-perfil">
+                    <p>Perfil</p>
+                    <p class="chip-tipo-perfil">{{
+                      orgao.tipoPerfil | tipoPerfil
+                    }}</p>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="perfilUsuario.permissoes?.ativos">
+              <ng-container
+                *ngFor="
+                  let ativo of perfilUsuario.permissoes.ativos;
+                  let i = index
+                ">
+                <div class="permissao">
+                  <div class="permissao-tipo">
+                    <p>Ativo</p>
+                    <p class="permissao-tipo-nome">{{ ativo.nome }}</p>
+                  </div>
+                  <div class="permissao-formularios-container">
+                    <p>Tipo de Formulário</p>
+                    <div class="chips-container">
+                      <ng-container
+                        *ngFor="let formulario of ativo.formularios">
+                        <p class="chip-formulario">{{ formulario.sigla }}</p>
+                      </ng-container>
+                    </div>
+                  </div>
+                  <div class="permissao-tipo-perfil">
+                    <p>Perfil</p>
+                    <p class="chip-tipo-perfil">{{
+                      ativo.tipoPerfil | tipoPerfil
+                    }}</p>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="perfilUsuario.permissoes?.blocos">
+              <ng-container
+                *ngFor="
+                  let bloco of perfilUsuario.permissoes.blocos;
+                  let i = index
+                ">
+                <div class="permissao">
+                  <div class="permissao-tipo">
+                    <p>Bloco</p>
+                    <p class="permissao-tipo-nome">{{ bloco.nome }}</p>
+                  </div>
+                  <div class="permissao-formularios-container">
+                    <p>Tipo de Formulário</p>
+                    <div class="chips-container">
+                      <ng-container
+                        *ngFor="let formulario of bloco.formularios">
+                        <p class="chip-formulario">{{ formulario.sigla }}</p>
+                      </ng-container>
+                    </div>
+                  </div>
+                  <div class="permissao-tipo-perfil">
+                    <p>Perfil</p>
+                    <p class="chip-tipo-perfil">{{
+                      bloco.tipoPerfil | tipoPerfil
+                    }}</p>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+        </mat-tab>
+        <mat-tab label="Notificações">
+          <div class="notificacoes-container">
+            <p class="notificacoes-title">Tipo de Formulário</p>
+            <ng-container
+              *ngFor="
+                let notificacao of perfilUsuario.notificacoes;
+                let i = index
+              ">
+              <div class="notificacao">
+                <div class="toggle">
+                  <mat-slide-toggle
+                    [checked]="notificacao.ativo"
+                    (change)="onToggleChange(notificacao.codigo, $event)">
+                  </mat-slide-toggle>
+                </div>
+                <div class="div-tipo-formulario">
+                  <p>Tipo de Formulário</p>
+                  <div class="chips-container">
+                    <p class="chip-abrv">{{
+                      notificacao.tipoFormulario?.sigla
+                    }}</p>
+                    <p class="nome-formulario">{{
+                      notificacao.tipoFormulario?.descricao
+                    }}</p>
+                  </div>
+                </div>
+                <div class="div-periodicidade">
+                  <p>Periodicidade</p>
+                  <div class="chips-container">
+                    <p class="chip">{{
+                      notificacao.periodicidade | periodicidade
+                    }}</p>
+                  </div>
+                </div>
+                <div class="div-tipo-alarme">
+                  <p>Alarme</p>
+                  <div class="chips-container">
+                    <p class="chip" *ngIf="notificacao.alarmEmail">E-mail</p>
+                    <p class="chip" *ngIf="notificacao.alarmPopUp">Pop-up</p>
+                  </div>
+                </div>
+                <div class="div-status">
+                  <p>Status</p>
+                  <div class="chips-container">
+                    <ng-container *ngFor="let status of notificacao.status">
+                      <p class="chip">{{ status }}</p>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="div-criado-por">
+                  <p>Criado Por</p>
+                  <div class="chips-container">
+                    <ng-container *ngFor="let alguem of notificacao.criadoPor">
+                      <p class="chip">{{ alguem }}</p>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </section>
+</ng-container>

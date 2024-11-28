@@ -1,0 +1,22 @@
+<div class="dropdown">
+  <button class="dropbtn" *ngIf="dropdown.link" (click)="navigateTo(dropdown.link)">
+    <span>
+      <img *ngIf="dropdown.icon" height="16" width="16" [src]="'../../../../../../../assets/icons/' + dropdown.icon" />
+      {{ dropdown.title }}
+    </span>
+  </button>
+
+  <button *ngIf="!dropdown.link" class="dropbtn" [class.isOpen]="this.dropdownOpen" (click)="toggleDropdown()">
+    <span>
+      <img *ngIf="dropdown.icon" height="16" width="16" [src]="'../../../../../../../assets/icons/' + dropdown.icon" />
+      {{ dropdown.title }}
+    </span>
+    <span *ngIf="dropdown.itens" class="arrow" [class.rotated]="dropdownOpen"> &#9662; </span>
+  </button>
+
+  <div class="dropdown-content" [class.show]="dropdownOpen" *ngIf="dropdown.itens">
+    <a (click)="navigateTo(item.link)" *ngFor="let item of dropdown.itens; index as i">
+      {{ item.title }}
+    </a>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+@import '../../../../styles.scss';
+
+:host {
+  #consultar-perfis {
+    padding: 1rem 2rem;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    vertical-align: super;
+    justify-content: space-between;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    h1 {
+      font-size: 28px;
+      line-height: 36px;
+    }
+    #button-cadastrar {
+      border: 1px solid $secondary-dark;
+      font-size: 14px;
+      display: flex;
+      line-height: 20px;
+      color: $secondary-color;
+      background-color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      .cadastrar-icone {
+        // height: 18px;
+        // width: 18px;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  .filtros {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+
+  .div-inputs {
+    max-width: 77rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .first-row {
+    display: flex;
+  }
+  .search-form-field {
+    width: 493px;
+  }
+  .slide-toggle {
+    margin: 1rem;
+  }
+  .toggle-group-container {
+    display: flex;
+    flex-direction: column;
+    p {
+      font-size: 12px;
+      line-height: 16px;
+      margin-bottom: 0.5rem;
+      color: #525252;
+    }
+  }
+  .button-toggle-group {
+    display: flex;
+  }
+  .button-toggle:not(:first-child) {
+    margin-left: 0.5rem;
+  }
+
+  .select-lotacao {
+    width: 15.625rem;
+  }
+  .select-orgao {
+    width: 15.625rem;
+    margin-left: 1rem;
+  }
+  .select-formulario {
+    width: 15.625rem;
+    margin-left: 1rem;
+  }
+
+  .buttons {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 1rem;
+  }
+  .button-consultar {
+    margin-left: 1rem;
+    color: white;
+  }
+
+  #div-tabs {
+    background-color: white;
+    margin: 1.5rem;
+    padding: 1rem;
+  }
+}

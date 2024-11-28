@@ -1,0 +1,67 @@
+<mat-form-field
+  class="chip-list"
+  subscriptSizing="dynamic"
+  [color]="this.formulariosArray.value.length === 0 ? 'warn' : 'primary'">
+  <mat-label [ngClass]="{ red: this.formulariosArray.value.length === 0 }"
+    >Tipo de Formulário*</mat-label
+  >
+  <mat-chip-grid #chipGrid>
+    @if (formularios.length <= 4) {
+      @for (formulario of formularios; track formulario) {
+        <mat-chip-row (removed)="remove(formulario)" [editable]="false">
+          {{ formulario.sigla }}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+      }
+    }
+    @if (formularios.length > 4) {
+      @for (formulario of formularios.slice(0, 4); track formulario) {
+        <mat-chip-row (removed)="remove(formulario)" [editable]="false">
+          {{ formulario.sigla }}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+      }
+      <mat-chip-row (removed)="removeAllChips()" [editable]="false">
+        +{{ formularios.length - 4 }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+    }
+  </mat-chip-grid>
+  <input
+    matInput
+    placeholder="Pesquise e selecione"
+    [formControl]="inputTextSearch"
+    autocomplete="off"
+    [matChipInputFor]="chipGrid"
+    [matChipInputAddOnBlur]="addOnBlur"
+    [matAutocomplete]="auto" />
+  @if (loadingAutocomplete) {
+    <button matSuffix mat-icon-button>
+      <img
+        matSuffix
+        src="../../../../../assets/img/loading-spinner.svg"
+        width="1rem" />
+    </button>
+  }
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option [value]="optionTodos" (click)="onTodosOptionSelected()">{{
+      optionTodos.sigla
+    }}</mat-option>
+    @if (!loadingAutocomplete) {
+      @for (option of formulariosAutocompleteOptions; track option) {
+        <mat-option [value]="option" (click)="onSelectedOptionEvent(option)">
+          <div class="option-container">
+            <div class="option-title">{{ option.sigla }}</div>
+            <div class="option-subtitle">{{ option.descricao }}</div>
+          </div>
+        </mat-option>
+      }
+    }
+  </mat-autocomplete>
+</mat-form-field>

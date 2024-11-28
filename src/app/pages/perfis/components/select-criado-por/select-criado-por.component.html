@@ -1,0 +1,24 @@
+<mat-form-field>
+  <mat-label>Criado por</mat-label>
+  <mat-select [formControl]="criadoPor" multiple>
+    @if (criadoPor.value) {
+      <!-- Atenção: o mat-select-trigger só irá ser exibido se os valores do controle forem compatíveis com os disponíveis na lista do select -->
+      <!-- por isso é necessário baixar a lista ao instanciar o valor da variável siglaFormulario -->
+      <mat-select-trigger *ngIf="criadoPor.value.length > 0">
+        <span class="chip-qtd-selected">
+          {{ criadoPor.value.length }}
+          {{ criadoPor.value.length > 1 ? 'selecionados' : 'selecionado' }}
+        </span>
+        <button matSuffix (click)="removeAllCriadorPor($event)">
+          <mat-icon style="font-size: 16px; height: 16px; margin-left: 1rem"
+            >close</mat-icon
+          >
+        </button>
+      </mat-select-trigger>
+    }
+
+    <mat-option *ngFor="let key of listaCriadoPor" [value]="key.value">
+      {{ key.viewValue }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

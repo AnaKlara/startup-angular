@@ -1,0 +1,4 @@
+<button (click)="toggle()" [ngClass]="isActive ? 'toggled' : ''">
+  {{ label }}
+  <mat-icon *ngIf="isActive" class="custom-icon-size">close</mat-icon>
+</button>

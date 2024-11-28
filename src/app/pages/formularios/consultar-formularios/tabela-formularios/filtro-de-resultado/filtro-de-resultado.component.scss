@@ -1,0 +1,15 @@
+@import '../../../../../../styles.scss';
+
+:host {
+  .filtros {
+    display: flex;
+    flex-direction: column;
+    .full-width {
+      width: 100%;
+    }
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

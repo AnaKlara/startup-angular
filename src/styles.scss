@@ -1,0 +1,13 @@
+@import './assets/styles/main.scss';
+@import 'material-icons/iconfont/material-icons.scss';
+
+mat-icon {
+  font-family: 'Material Icons' !important;
+}
+
+// Para definir a paleta principal vá em './assets/styles/theme.scss';
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+}

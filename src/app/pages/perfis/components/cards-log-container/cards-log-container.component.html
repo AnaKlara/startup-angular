@@ -1,0 +1,43 @@
+<div class="card-log" *ngFor="let log of listaDelogsUsuario">
+  <div class="card-header">
+    <div class="chave-nome-usuario">
+      <i class="icon user-icon"></i>
+      <p>{{ log.chaveUsuarioQueFezAlteracao }}</p>
+      <p>-</p>
+      <p>{{ log.nomeUsuarioQueFezAlteracao }}</p>
+    </div>
+    <div class="card-date-time">
+      {{ log.dataHora | date: 'dd/MM/yyyy hh:mm' }}
+    </div>
+  </div>
+
+  <ng-container *ngFor="let op of log.operacoes">
+    <div class="card-activitie" [innerHTML]="op.descricao | boldFirstWord"> </div>
+    <ng-container *ngIf="op.formularios">
+      <div class="card-chips">
+        <ng-container *ngFor="let formulario of op.formularios">
+          <p class="chip">{{ formulario }}</p>
+        </ng-container>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <h5 class="justificativa-title">Justificativa</h5>
+  <h6 class="justificativa" *ngIf="log.justificativa">
+    {{ log.justificativa }}
+  </h6>
+  <h6 class="justificativa" *ngIf="!log.justificativa">Não informado</h6>
+
+  <ng-container *ngIf="log.anexos">
+    <h5 class="anexos-title">Anexo(s)</h5>
+    <ng-container *ngFor="let a of log.anexos">
+      <a class="anexo" matRipple>
+        <div>
+          <mat-icon style="color: #666666">attachment</mat-icon>
+          <p class="anexo-nome">{{ a.nome }}</p>
+        </div>
+        <mat-icon style="color: #008542">download</mat-icon>
+      </a>
+    </ng-container>
+  </ng-container>
+</div>

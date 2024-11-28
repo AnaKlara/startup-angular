@@ -1,0 +1,46 @@
+<breadcrumb [breadcrumbs]="breadcrumbs"></breadcrumb>
+
+<section id="section-graficos">
+  <div class="div-header">
+    <h1>Gráficos do sistema</h1>
+    <h2>Configure suas preferências</h2>
+  </div>
+  <div class="flex-row-container">
+    <!-- Area Chart -->
+    <div id="chart-area" class="flex-row-item">
+      <apx-chart
+        [series]="chartOptionsArea.series"
+        [chart]="chartOptionsArea.chart"
+        [xaxis]="chartOptionsArea.xaxis"
+        [stroke]="chartOptionsArea.stroke"
+        [tooltip]="chartOptionsArea.tooltip"
+        [dataLabels]="chartOptionsArea.dataLabels"
+      >
+      </apx-chart>
+    </div>
+
+    <!-- Radial Bar Chart -->
+    <div id="chart-radial" class="flex-row-item">
+      <apx-chart
+        [series]="chartOptionsRadial.series"
+        [chart]="chartOptionsRadial.chart"
+        [plotOptions]="chartOptionsRadial.plotOptions"
+        [labels]="chartOptionsRadial.labels"
+        [stroke]="chartOptionsRadial.stroke"
+        [fill]="chartOptionsRadial.fill"
+      ></apx-chart>
+    </div>
+
+    <!-- Bar Chart -->
+    <div id="chart-bar" class="flex-row-item">
+      <apx-chart
+        [series]="chartOptionsBar.series"
+        [chart]="chartOptionsBar.chart"
+        [dataLabels]="chartOptionsBar.dataLabels"
+        [plotOptions]="chartOptionsBar.plotOptions"
+        [yaxis]="chartOptionsBar.yaxis"
+        [xaxis]="chartOptionsBar.xaxis"
+      ></apx-chart>
+    </div>
+  </div>
+</section>

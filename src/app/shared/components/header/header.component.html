@@ -1,0 +1,56 @@
+<header>
+  <div class="div-left">
+    <h1 (click)="redirectTo('home')">Sitema</h1>
+    <h2>Subtítulo</h2>
+  </div>
+
+  <div class="div-right" style="display: flex">
+    <a (click)="suportButtonClick()">
+      <span>
+        <img
+          height="16"
+          width="16"
+          src="../../../../../assets/icons/headphone.svg"
+          alt="" />
+      </span>
+      <p style="display: inline-block; color: white">Suporte Técnico</p>
+    </a>
+    <button (click)="helpButtonClick()">
+      <span>
+        <img
+          height="16"
+          width="16"
+          src="../../../../../assets/icons/notificacoes.svg"
+          alt="" />
+      </span>
+    </button>
+    <button (click)="notificationButtonClick()">
+      <span>
+        <img
+          height="16"
+          width="16"
+          src="../../../../../assets/icons/informacoes.svg"
+          alt="" />
+      </span>
+    </button>
+    <button (click)="toggleFloatingDiv()">
+      <span>
+        <img
+          height="16"
+          width="16"
+          src="../../../../../assets/icons/user-avatar-filled-alt.svg"
+          alt="" />
+      </span>
+    </button>
+    <user-profile-card
+      [toggleCallListener]="triggerEventToUserFloatCard.asObservable()"
+      [usuario]="dadosUsuario"></user-profile-card>
+
+    <suport-card
+      [toggleCallListener]="
+        triggerEventToSuportCard.asObservable()
+      "></suport-card>
+
+    <img height="48" src="../../../../../assets/img/logo.png" />
+  </div>
+</header>

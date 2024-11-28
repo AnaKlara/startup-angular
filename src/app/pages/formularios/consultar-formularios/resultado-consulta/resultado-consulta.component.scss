@@ -1,0 +1,47 @@
+@import '../../../../../styles.scss';
+
+:host {
+  #resultado {
+    display: flex;
+    background-color: #f0f0f0;
+    padding: 1.5rem;
+    #resultado-container {
+      width: 100%;
+      // background-color: $white;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+
+        .title {
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 28px;
+          color: #191919;
+        }
+        .p-total {
+        }
+      }
+      #tags-container {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        .tag {
+          padding: 4px 12px;
+          border-radius: 8px;
+          background-color: #666666;
+          color: $white;
+          height: 32px;
+          font-size: 14px;
+          line-height: 20px;
+        }
+      }
+
+      #tabela-container {
+        padding-top: 0.5rem;
+        background-color: $white;
+      }
+    }
+  }
+}

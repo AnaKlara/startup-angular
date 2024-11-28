@@ -1,0 +1,39 @@
+<div>
+  <h2 mat-dialog-title>Adicionar cláusula</h2>
+  <mat-dialog-content class="mat-typography">
+    <mat-tab-group mat-stretch-tabs="false">
+      <mat-tab label="Importar">
+        <div class="tab-content">
+          <span class="description-text">
+            Importe cláusulas de outros contratos ativos
+          </span>
+          <input
+            type="file"
+            #fileInput
+            class="file-upload"
+            style="display: none"
+            (change)="onFileSelected(fileInput)" />
+          <button class="button primary-button" (click)="fileInput.click()">
+            Selecionar Arquivo
+            <span
+              ><img
+                height="16"
+                width="16"
+                src="../../../../../assets/icons/download.svg"
+                style="filter: brightness(0) invert(1)"
+            /></span>
+          </button>
+        </div>
+      </mat-tab>
+      <mat-tab label="Adicionar nova">
+        <div class="tab-content">Adicione conteúdo aqui</div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end" class="dialog-button">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+      Importar
+    </button>
+  </mat-dialog-actions>
+</div>

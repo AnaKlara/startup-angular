@@ -1,0 +1,59 @@
+@import '../../../../styles.scss';
+
+:host {
+  nav {
+    position: relative;
+    background-color: $white;
+    border-bottom: 1px solid;
+    border-color: $neutral-6;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #div_breadcrumbs {
+    width: 60%;
+    display: inline-block;
+  }
+
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.75rem 2rem;
+    list-style: none;
+    background-color: $white;
+    line-height: 18px;
+    font-size: 14px;
+    font-weight: 400;
+    height: 42px;
+  }
+
+  .breadcrumb-item + .breadcrumb-item::before {
+    display: inline-block;
+    content: '/';
+    padding: 0 0.5rem;
+    color: $neutral-10;
+  }
+
+  .breadcrumb-item a {
+    color: $secondary-color;
+    text-decoration: none;
+    background-color: transparent;
+  }
+
+  .breadcrumb-item a:hover {
+    text-decoration: underline;
+  }
+
+  .breadcrumb-item.active {
+    color: $neutral-10;
+  }
+
+  .breadcrumb-buttons {
+    padding-right: 2rem;
+    align-items: flex-end;
+    justify-content: flex-end;
+    display: flex;
+    gap: 0.5rem;
+  }
+}

@@ -1,0 +1,22 @@
+<div class="modal">
+  <div class="descartar-perfil-header">
+    <h1>Descartar Alterações</h1>
+    <button (click)="closeModal()">
+      <img src="../../../../../../assets/icons/close.svg" width="20" />
+    </button>
+  </div>
+  <div class="content">
+    <div class="descartar-perfil-info"> Essa ação não pode ser desfeita </div>
+    <div class="descartar-perfil-banner">
+      <mat-icon style="font-size: 20px">info</mat-icon>
+      Você perderá todas as alterações feitas.
+    </div>
+    <div class="descartar-perfil-footer">
+      <button mat-button (click)="cancelarDescartar()">Cancelar</button>
+      <button mat-flat-button color="warn" (click)="confirmarDescartar()">
+        <mat-icon style="font-size: 16px; height: 16px">block</mat-icon>
+        Descartar Alterações
+      </button>
+    </div>
+  </div>
+</div>

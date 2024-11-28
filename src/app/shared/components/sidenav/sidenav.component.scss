@@ -1,0 +1,51 @@
+@import '../../../../styles.scss';
+:host {
+  #button-toggle-sidenav {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 3rem;
+    width: 3rem;
+    background-color: $primary-color;
+    color: $white;
+    cursor: pointer;
+    transition: 0.5s;
+    img {
+      content: url('../../../../assets/icons/menu.svg');
+      fill: $white;
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  .button-open {
+    background-color: $white !important;
+    img {
+      content: url('../../../../assets/icons/close.svg') !important;
+      fill: black;
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  #menu-container {
+    $header-height: 3rem;
+    $footer-height: 3rem;
+    height: calc(100% - $header-height - $footer-height);
+    $container-width: 20rem;
+    width: $container-width;
+    position: fixed;
+    z-index: $z-index-sidenav;
+    top: $header-height;
+    left: -$container-width;
+    background-color: $white;
+    padding-top: 1rem;
+    overflow-x: hidden;
+    transition: 0.5s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  }
+
+  .show-container {
+    left: 0rem !important;
+  }
+}

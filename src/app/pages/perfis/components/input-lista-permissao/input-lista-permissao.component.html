@@ -1,0 +1,173 @@
+<div class="permissao-orgao-ativo-bloco">
+  <h2 class="permissao-title">Órgão / Ativo / Bloco</h2>
+  <div class="combo-select">
+    <mat-form-field appearance="outline">
+      <mat-label>Tipo</mat-label>
+      <mat-select
+        [(ngModel)]="selectedOrgaoAtivoBloco"
+        [ngModelOptions]="{ standalone: true }">
+        @for (option of selectOrgaoAtivoBloco; track option) {
+          <mat-option [value]="option">{{ option.label }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="autocomplete-tipo" appearance="outline">
+      <mat-label>{{ autocompleteLabel }}</mat-label>
+      <input
+        type="text"
+        [placeholder]="autocopmletePlaceholder"
+        matInput
+        [matAutocomplete]="auto"
+        [disabled]="!selectedOrgaoAtivoBloco"
+        [(ngModel)]="inputAutocomplete"
+        (ngModelChange)="onSearch($event)"
+        [ngModelOptions]="{ standalone: true }" />
+      @if (autocompleteOrgaoAtivoBlocoloading) {
+        <button matSuffix mat-icon-button>
+          <img
+            matSuffix
+            src="../../../../../assets/img/loading-spinner.svg"
+            width="1rem" />
+        </button>
+      }
+      <mat-autocomplete
+        #auto="matAutocomplete"
+        (optionSelected)="autocompleteSelectionChange($event)">
+        @if (autocompleteOrgaoAtivoBlocoOptions) {
+          @for (option of autocompleteOrgaoAtivoBlocoOptions; track option) {
+            <mat-option [value]="option">{{ option.label }}</mat-option>
+          }
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  <div class="form-dinamico" [formGroup]="permissoes">
+    @if (orgaosFA.value.length > 0) {
+      <div formArrayName="orgaos">
+        <ng-container
+          *ngFor="
+            let orgaoForm of orgaosFA.controls;
+            let i = index;
+            trackBy: trackByIndexI
+          ">
+          <div class="form-dinamico-item">
+            <div class="div-inputs">
+              <div class="form-dinamico-item-nome-div">
+                <h3>Órgão</h3>
+                <h4>{{ orgaoForm.get('nome')?.value }}</h4>
+              </div>
+              <div [formGroupName]="i" class="div-input-formularios">
+                <input-chips-lista-formulario
+                  formControlName="formularios"
+                  class="input-formularios">
+                </input-chips-lista-formulario>
+                <mat-form-field subscriptSizing="dynamic">
+                  <mat-label>Tipo de Perfil</mat-label>
+                  <mat-select formControlName="tipoPerfil">
+                    @for (tipo of tiposPerfis; track tipo) {
+                      <mat-option [value]="tipo.value">{{
+                        tipo.label
+                      }}</mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <button
+              mat-icon-button
+              color="accent"
+              (click)="removeItem('orgao', i)">
+              <mat-icon class="icon-trash">delete</mat-icon>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    }
+    @if (blocosFA.value.length > 0) {
+      <div formArrayName="blocos">
+        <ng-container
+          *ngFor="
+            let blocoForm of blocosFA.controls;
+            let j = index;
+            trackBy: trackByIndexJ
+          ">
+          <div class="form-dinamico-item">
+            <div class="div-inputs">
+              <div class="form-dinamico-item-nome-div">
+                <h3>Bloco</h3>
+                <h4>{{ blocoForm.get('nome')?.value }}</h4>
+              </div>
+              <div [formGroupName]="j" class="div-input-formularios">
+                <input-chips-lista-formulario
+                  formControlName="formularios"
+                  class="input-formularios">
+                </input-chips-lista-formulario>
+
+                <mat-form-field subscriptSizing="dynamic">
+                  <mat-label>Tipo de Perfil</mat-label>
+                  <mat-select formControlName="tipoPerfil">
+                    @for (tipo of tiposPerfis; track tipo) {
+                      <mat-option [value]="tipo.value">{{
+                        tipo.label
+                      }}</mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <button
+              mat-icon-button
+              color="accent"
+              (click)="removeItem('bloco', j)">
+              <mat-icon class="icon-trash">delete</mat-icon>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    }
+    @if (ativosFA.value.length > 0) {
+      <div formArrayName="ativos">
+        <ng-container
+          *ngFor="
+            let ativoForm of ativosFA.controls;
+            let k = index;
+            trackBy: trackByIndexK
+          ">
+          <div class="form-dinamico-item">
+            <div class="div-inputs">
+              <div class="form-dinamico-item-nome-div">
+                <h3>Ativo</h3>
+                <h4>{{ ativoForm.get('nome')?.value }}</h4>
+              </div>
+              <div [formGroupName]="k" class="div-input-formularios">
+                <input-chips-lista-formulario
+                  formControlName="formularios"
+                  class="input-formularios">
+                </input-chips-lista-formulario>
+                <mat-form-field subscriptSizing="dynamic">
+                  <mat-label>Tipo de Perfil</mat-label>
+                  <mat-select formControlName="tipoPerfil">
+                    @for (tipo of tiposPerfis; track tipo) {
+                      <mat-option [value]="tipo.value">{{
+                        tipo.label
+                      }}</mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <button
+              mat-icon-button
+              color="accent"
+              (click)="removeItem('ativo', k)">
+              <mat-icon class="icon-trash">delete</mat-icon>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<button
+  id="button-toggle-sidenav"
+  (click)="toggleSidenav()"
+  [ngClass]="{ 'button-open': isOpen === true }"
+  [class.button-open]="this.isOpen"
+>
+  <span><img /></span>
+</button>
+
+<section id="menu-container" [class.show-container]="this.isOpen">
+  <ng-container *ngFor="let menuItem of menuItems">
+    <app-dropdown-sidenav [dropdown]="menuItem" (closeSidenav)="toggleSidenav()"></app-dropdown-sidenav>
+  </ng-container>
+</section>

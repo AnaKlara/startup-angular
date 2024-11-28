@@ -1,0 +1,14 @@
+.mat-mdc-chip.mat-mdc-standard-chip {
+  --mdc-chip-container-height: 24px !important;
+  background-color: #008542 !important;
+}
+.mdc-evolution-chip__text-label,
+.mat-mdc-chip-action-label {
+  color: white !important;
+}
+.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) .mdc-evolution-chip__icon--trailing {
+  color: white !important;
+}
+.mat-mdc-chip-remove {
+  opacity: 1 !important;
+}

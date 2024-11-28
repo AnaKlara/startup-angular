@@ -1,0 +1,113 @@
+<breadcrumb [breadcrumbs]="breadcrumbItems"></breadcrumb>
+<float-container
+  [toggleFloatContainerParentEvent]="
+    triggerEventToFloatContainer.asObservable()
+  "
+  [title]="'Log'">
+  <ng-template #content>
+    <cards-log-container
+      *ngIf="listaDelogsUsuario"
+      [listaDelogsUsuario]="listaDelogsUsuario"></cards-log-container>
+  </ng-template>
+</float-container>
+<section id="header-editar-perfil">
+  <div class="user-info">
+    <div class="name-abreviation-circle">{{
+      perfilUsuario.nome | nameAbreviation
+    }}</div>
+    <div class="name-lot">
+      <p class="p-lot">{{ perfilUsuario.lotacao }}</p>
+      <p class="p-name">{{ perfilUsuario.nome }}</p>
+    </div>
+    <p class="chip-chave">{{ perfilUsuario.chave }}</p>
+  </div>
+
+  <div class="user-action-buttons">
+    <button
+      mat-button
+      color="warn"
+      class="btn-cancelar"
+      (click)="cancelarEdicao()">
+      Cancelar
+    </button>
+
+    @if (usuarioTemPermissao) {
+      <button class="button button-editar" (click)="salvarAleracoes()">
+        <mat-icon class="icon">save</mat-icon>
+        <p class="btn-title">Salvar</p>
+      </button>
+    }
+
+    @if (!usuarioTemPermissao) {
+      <button class="button justificar" (click)="solicitarAlteracao()">
+        <mat-icon class="icon"> admin_panel_settings</mat-icon>
+        <p class="btn-title">Solicitar Alteração</p>
+      </button>
+    }
+
+    <button
+      class="button button-menu-trigger"
+      [matMenuTriggerFor]="menu"
+      (click)="isMatMenuOpen = true">
+      <mat-icon *ngIf="!isMatMenuOpen" class="icon">
+        keyboard_arrow_down
+      </mat-icon>
+      <mat-icon *ngIf="isMatMenuOpen" class="icon">
+        keyboard_arrow_up
+      </mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" (closed)="isMatMenuOpen = false">
+      <button mat-menu-item (click)="redirectToClonar()">
+        <mat-icon>group</mat-icon>
+        <span>Clonar</span>
+      </button>
+      <button mat-menu-item (click)="visualizarLog()">
+        <mat-icon>history</mat-icon>
+        <span>Ver log</span>
+      </button>
+      <button
+        *ngIf="perfilUsuario.ativo"
+        mat-menu-item
+        (click)="openModalDesativarPerfil()">
+        <mat-icon>person_off</mat-icon>
+        <span>Desativar</span>
+      </button>
+      <button *ngIf="!perfilUsuario.ativo" mat-menu-item>
+        <mat-icon>person_off</mat-icon>
+        <span>Ativar</span>
+      </button>
+    </mat-menu>
+  </div>
+</section>
+
+<section id="formulario-perfil">
+  <form [formGroup]="perfilForm" class="perfil-form">
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab label="Permissões">
+        <div class="perfil-sede-container">
+          <mat-slide-toggle class="perfil-sede" formControlName="perfilSede">
+            Perfil Sede
+          </mat-slide-toggle>
+          <mat-form-field appearance="outline">
+            <mat-label>Tipo de Perfil</mat-label>
+            <mat-select formControlName="tipoPerfil">
+              @for (tipo of tiposPerfis; track tipo) {
+                <mat-option [value]="tipo.value">{{ tipo.label }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <input-lista-permissao
+          [permissoes]="perfilForm.get('permissoes')"></input-lista-permissao>
+      </mat-tab>
+      <mat-tab label="Notificações">
+        <div id="tab-notificacoes">
+          @if (perfilForm) {
+            <input-lista-notificacao
+              [perfilForm]="perfilForm"></input-lista-notificacao>
+          }
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </form>
+</section>

@@ -1,0 +1,62 @@
+@use '../../../../node_modules/@angular/material' as mat;
+@use 'define-typografy-config.scss' as config;
+
+@import './palletes.scss';
+
+@include mat.core();
+
+$project-typography-level: mat.define-typography-level(
+  $font-family: 'Open Sans',
+  $font-weight: 400,
+  $font-size: 14px,
+  $line-height: 18px,
+  $letter-spacing: normal,
+);
+
+$project-typography: mat.define-typography-config();
+
+$green-material-palette: mat.define-palette($green-palette);
+$yellow-material-palette: mat.define-palette($yellow-palette);
+$ocean-material-palette: mat.define-palette($ocean-palette);
+
+@function dynamic-primary-theme($theme) {
+  @if $theme == 'yellow' {
+    @return $yellow-material-palette;
+  } @else if $theme == 'green' {
+    @return $green-material-palette;
+  } @else if $theme == 'ocean' {
+    @return $ocean-material-palette;
+  } @else {
+    @error "Invalid theme: #{$theme} is not supported.";
+  }
+}
+
+@function dynamic-accent-theme($theme) {
+  @if $theme == 'yellow' {
+    @return $green-material-palette;
+  } @else if $theme == 'green' {
+    @return $yellow-material-palette;
+  } @else if $theme == 'ocean' {
+    @return $green-material-palette;
+  } @else {
+    @error "Invalid theme: #{$theme} is not supported.";
+  }
+}
+
+// mandatory stuff for theming
+$theme-primary: dynamic-primary-theme($global-color-theme);
+$theme-accent: dynamic-accent-theme($global-color-theme);
+
+// include the custom theme components into a theme object
+$project-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $theme-primary,
+      accent: $theme-accent,
+    ),
+    typography: config.$project-typography,
+    density: 0,
+  )
+);
+// include the custom theme object into the angular material theme
+@include mat.all-component-themes($project-theme);

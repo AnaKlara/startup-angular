@@ -1,0 +1,122 @@
+$background: $neutral-1;
+$background-hover: $neutral-5 12%;
+$background-active: $neutral-5 50%;
+$background-selected: $neutral-5 20%;
+$background-selected-hover: $neutral-5 32%;
+$background-inverse: $neutral-8;
+$background-inverse-hover: $neutral-8 12%;
+$background-brand: $primary-color;
+
+$layer-01: $white;
+$layer-02: $neutral-1;
+$layer-03: $white;
+$layer-hover-01: $neutral-2;
+$layer-hover-02: $neutral-2;
+$layer-hover-03: $neutral-2;
+$layer-active-01: $neutral-3;
+$layer-active-02: $neutral-3;
+$layer-active-03: $neutral-3;
+$layer-selected-01: $neutral-2;
+$layer-selected-02: $neutral-2;
+$layer-selected-03: $neutral-2;
+$layer-selected-hover-01: $neutral-4;
+$layer-selected-hover-02: $neutral-4;
+$layer-selected-hover-03: $neutral-4;
+$layer-selected-inverse: $neutral-10;
+$layer-selected-disabled: $neutral-5;
+
+$layer-accent-01: $neutral-2;
+$layer-accent-02: $neutral-2;
+$layer-accent-03: $neutral-2;
+$layer-accent-hover-01: $neutral-3;
+$layer-accent-hover-02: $neutral-3;
+$layer-accent-hover-03: $neutral-3;
+$layer-accent-active-01: $neutral-4;
+$layer-accent-active-02: $neutral-4;
+$layer-accent-active-03: $neutral-4;
+
+$field-01: $white;
+$field-02: $neutral-1;
+$field-03: $white;
+$field-hover-01: $neutral-2;
+$field-hover-02: $neutral-2;
+$field-hover-03: $neutral-2;
+
+$border-interactive: $primary-color;
+$border-subtle-00: $neutral-3;
+$border-subtle-01: $neutral-2;
+$border-subtle-02: $neutral-3;
+$border-subtle-03: $neutral-2;
+$border-subtle-selected-01: $neutral-3;
+$border-subtle-selected-02: $neutral-3;
+$border-subtle-selected-03: $neutral-3;
+$border-strong-01: $neutral-5;
+$border-strong-02: $neutral-5;
+$border-strong-03: $neutral-5;
+$border-tile-01: $neutral-4;
+$border-tile-02: $neutral-3;
+$border-tile-03: $neutral-4;
+$border-inverse: $neutral-10;
+$border-disabled: $neutral-3;
+
+$border-radius-8: 8px;
+
+$text-primary: $neutral-10;
+$text-secondary: $neutral-7;
+$text-placeholder: $neutral-4;
+$text-on-color: $white;
+$text-on-color-disabled: $neutral-5;
+$text-helper: $neutral-6;
+$text-error: $error-base;
+$text-inverse: $white;
+$text-disabled: $neutral-10 25%;
+
+$link-primary: $primary-color;
+$link-primary-hover: $primary-dark;
+$link-secondary: $primary-dark;
+$link-inverse: $primary-light;
+$link-visited: $info-base;
+
+$icon-primary: $neutral-10;
+$icon-secondary: $neutral-7;
+$icon-on-color: $white;
+$icon-on-color-disabled: $neutral-5;
+$icon-interactive: $primary-color;
+$icon-inverse: $white;
+$icon-disabled: $neutral-10 25%;
+
+$button-primary: $primary-color;
+$button-primary-hover: $primary-dark;
+$button-primary-active: $primary-darker;
+$button-secondary: $neutral-8;
+$button-secondary-hover: $neutral-9;
+$button-secondary-active: $neutral-6;
+$button-tertiary: $primary-color;
+$button-tertiary-hover: $primary-dark;
+$button-tertiary-active: $primary-darker;
+$button-danger-primary: $error-base;
+$button-danger-secondary: $error-base;
+$button-danger-hover: $error-base;
+$button-danger-active: $error-base;
+$button-separator: $neutral-2;
+$button-disabled: $neutral-3;
+
+$support-error: $error-base;
+$support-success: $success-base;
+$support-warning: $warning-base;
+$support-info: $info-base;
+$support-error-inverse: $error-light;
+$support-success-inverse: $success-light;
+$support-warning-inverse: $warning-light;
+$support-info-inverse: $info-light;
+
+$focus: $primary-color;
+$focus-inset: $white;
+$focus-inverse: $white;
+
+$interactive: $primary-color;
+$highlight: $primary-lighter;
+$toggle-off: $neutral-5;
+$overlay: $neutral-10 50%;
+$skeleton-element: $neutral-3;
+$skeleton-background: $neutral-2;
