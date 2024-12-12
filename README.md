@@ -25,52 +25,52 @@
 </a>
 </p>
 
-<h2 style="color:SteelBlue;font-weight: bold">Sobre o Projeto</h2>
+## Available Languages
 
-Este projeto foi gerado com o Angular CLI versão 17 e Node.js versão 20.11.1. O projeto utiliza a biblioteca Angular Material para a construção das páginas e componentes, garantindo um design consistente e moderno.
+- [Portuguese](README-pt-BR.md)
 
-Fique à vontade para explorar o projeto e adaptá-lo às suas necessidades específicas. Ele foi projetado para ser flexível e extensível, facilitando a adição de novos recursos e a personalização de acordo com os requisitos do seu projeto.
+<h2 style="color:SteelBlue;font-weight: bold">About the Project</h2>
 
-Esperamos que este projeto seja útil e contribua para o seu desenvolvimento em Angular. Em caso de dúvidas ou problemas, contate a equipe de arquitetura.
+This project was generated with Angular CLI version 17 and Node.js version 20.11.1. It uses the Angular Material library for constructing pages and components, ensuring a consistent and modern design.
 
-#### Configuração do Ambiente
+Feel free to explore the project and adapt it to your specific needs. It has been designed to be flexible and extensible, making it easy to add new features and customize according to the requirements of your project
 
-1. Clone o repositório do projeto em sua máquina local:
+#### Environment Setup
 
-```
-git clone <URL_DO_REPOSITORIO>
-```
-
-2. Acesse o diretório do projeto:
+1. Clone the project repository to your local machine:
 
 ```
-cd <DIRETORIO_DO_PROJETO>
+git clone <REPOSITORY_URL>
 ```
 
-3. Instale as dependências do projeto:
+2. Navigate to the project directory:
+
+```
+cd <PROJECT_DIRECTORY>
+```
+
+3. Install the project dependencies:
 
 ```
 npm install
 ```
 
-#### Executando o Projeto
+#### Running the Project
 
-Para executar o projeto, siga as etapas abaixo:
+To run the project, follow the steps below:
 
-1. Inicie o servidor de desenvolvimento:
+1. Start the development server:
 
 ```
 ng serve --open
 ```
 
-2. Abra o navegador e acesse a URL:
+2. Open your browser and navigate to the URL: http://localhost:4200
    http://localhost:4200
 
-#### Estrutura do Projeto
+#### Project Structure
 
-O projeto segue uma estrutura de diretórios organizada, inspirada no modelo de Arquitetura Limpa.
-
-A estrutura básica é a seguinte:
+The project follows an organized directory structure as follows:
 
 ```
 src/
@@ -104,45 +104,44 @@ src/
 
 ```
 
-<h2  style="color:SteelBlue;font-weight: bold">Desenvolvimento</h2 >
+<h2  style="color:SteelBlue;font-weight: bold">Development</h2 >
 
-<h3  style="color:BurlyWood;font-weight: bold">Ferramentas DEV: extensões & vscode</h3 >
+<h3  style="color:BurlyWood;font-weight: bold">DEV Tools: Extensions & VSCode</h3 >
 
-Deixamos algumas recomendações de extensões para o editor de código vscode. Caso não receba uma notificação automática pode-se instalar manualmente as configurações de extensões recomendadas:
+Here are some recommended extensions for the VSCode code editor. If you don’t receive an automatic notification, you can manually install the recommended extension settings:
 
-Abra a paleta de comandos:
+Open the command palette:
 
 ```
 CMD + Shift + p
 ```
 
-Pesquise por 'Show Recommended Extensions'.
+Search for 'Show Recommended Extensions'.
 
-Todas as extensões podem ser instaladas juntas ou apenas as extensões que você escolher.
+All extensions can be installed at once or only the ones you choose.
 
-<h3  style="color:BurlyWood;font-weight: bold">Ferramentas DEV: Lint & Prettier</h3>
+<h3  style="color:BurlyWood;font-weight: bold">DEV Tools: Lint & Prettier</h3>
 
-Prettier e ESLint são duas ferramentas populares usadas em conjunto para manter a qualidade do código em projetos de desenvolvimento. Embora ambos ajudem a melhorar o código, eles têm propósitos distintos:
+Prettier and ESLint are two popular tools often used together to maintain code quality in development projects. While both help improve code, they serve different purposes:
 
-<h4>Prettier: Formatação de Código</h4>
+<h4>Prettier: Code Formatting</h4>
 
-Prettier é uma ferramenta de formatação de código automática. Ele aplica regras consistentes de estilo de código, como indentação, espaçamento, quebras de linha, etc.
-Benefícios:
+Prettier is an automatic code formatting tool. It applies consistent code style rules like indentation, spacing, line breaks, etc. Benefits:
 
-- Consistência: Garante que o código seja formatado de maneira consistente em todo o projeto, independentemente de quem está escrevendo o código.
-- Facilidade de Uso: Ao configurar o Prettier, você pode formatar automaticamente o código ao salvar arquivos, eliminando a necessidade de discutir ou decidir sobre o estilo de código.
+- Consistency: Ensures that code is formatted consistently across the project, regardless of who is writing the code.
+- Ease of Use: Once Prettier is set up, it formats the code automatically on file save, eliminating the need for discussions about code style.
 
-<h4>ESLint: Análise de Código (Linting)</h4>
+<h4>ESLint: Code Analysis (Linting)</h4>
 
-ESLint é uma ferramenta de análise de código que ajuda a encontrar e corrigir problemas no código, como erros de sintaxe, práticas de programação incorretas e possíveis bugs. Benefícios:
+ESLint is a code analysis tool that helps identify and fix issues in code, such as syntax errors, improper programming practices, and potential bugs. Benefits:
 
-- Qualidade do Código: Ajuda a identificar e corrigir problemas antes de rodar ou implantar o código.
-  & Conformidade com Boas Práticas: Garante que o código siga boas práticas de desenvolvimento, como evitar o uso de variáveis não utilizadas ou funções assíncronas sem tratamento de erro.
-- Personalização: Permite configurar regras específicas de acordo com os padrões e necessidades do seu projeto.
+- Code Quality: Helps identify and fix issues before running or deploying the code.
+- Best Practices Compliance: Ensures code follows good development practices, like avoiding unused variables or unhandled asynchronous functions.
+- Customization: Allows configuring specific rules based on project standards and needs.
 
-<h4>Utilização</h4>
+<h4>Usage</h4>
 
-Fazer uma varredura no projeto para encontrar erros de formatação:
+To scan the project for formatting issues:
 
 ```
 npm run format
@@ -150,7 +149,7 @@ npm run format
 
 .
 
-Fazer uma varredura no projeto para encontrar problemas de código:
+To scan the project for code issues:
 
 ```
 npm run lint
@@ -158,37 +157,37 @@ npm run lint
 
 .
 
-Fazer uma varredura no projeto para ajustar automaticamente problemas de código não graves:
+To scan and automatically fix non-severe code issues:
 
 ```
 npm run lint:fix
 ```
 
-<h3  style="color:BurlyWood;font-weight: bold">Estilos & organização</h3 >
+<h3  style="color:BurlyWood;font-weight: bold">Styles & Organization</h3 >
 
-Criamos e organizamos estilos globais para o projeto. Eles estão localizados na pasta: `src/assets/styles`. Lá também estão reunidos estilos e configurações para a utilização adequada do angular material e outras bibliotecas de terceiros. É possível alterar as confgurações globalmente e utilizá-las em qualquer lugar do projeto, bastando apenas importar o arquivo de estilos `styles.scss` na raíz do projeto.
+I created and organized global styles for the project, located in the src/assets/styles folder. Here, you’ll also find styles and configurations for proper use of Angular Material and other third-party libraries. You can change global settings and use them anywhere in the project by importing the styles.scss file in the root of the project.
 
-Existem três temas de cores a esclher: yellow, green e ocean. O padrão é yellow.
+There are three color themes to choose from: yellow, green, and ocean. The default is yellow.
 
-<h3  style="color:BurlyWood;font-weight: bold">Gerando e Utilizando Componentes</h3 >
+<h3  style="color:BurlyWood;font-weight: bold">Generating and Using Components</h3 >
 
-Para gerar um novo componente, execute o seguinte comando no terminal:
+To generate a new component, run the following command in the terminal:
 
 ```
 ng generate component nome-do-componente
 ```
 
-Isso criará automaticamente os arquivos necessários para o componente, incluindo o arquivo .ts, .html, .scss e .spec.ts (para testes).
+This will automatically create the necessary files for the component, including the .ts, .html, .scss, and .spec.ts files (for tests).
 
-Após gerar o componente, você pode utilizá-lo em outras partes do projeto. Para fazer isso, siga as etapas abaixo:
+After generating the component, you can use it in other parts of the project. Follow these steps:
 
-1. Importe o componente no módulo em que deseja utilizá-lo. Por exemplo, se deseja utilizar o componente em um módulo chamado meu-modulo, abra o arquivo meu-modulo.module.ts e importe o componente da seguinte maneira:
+1. Import the component into the module where you want to use it. For example, if you want to use the component in a module called my-module, open my-module.module.ts and import the component like this:
 
 ```
 import { MeuComponenteComponent } from '../caminho-do-componente/meu-componente.component';
 ```
 
-2. Adicione o componente ao array declarations do módulo. Isso permitirá que o Angular reconheça e renderize o componente corretamente:
+2. Add the component to the module's declarations array. This will allow Angular to recognize and render the component correctly:
 
 ```
 declarations: [
@@ -197,17 +196,17 @@ declarations: [
 ]
 ```
 
-3. Agora você pode utilizar o componente em qualquer template do módulo. Por exemplo, se deseja utilizar o componente em um template chamado meu-template.component.html, basta adicionar a tag do componente da seguinte maneira:
+3. Now you can use the component in any template within the module. For example, if you want to use the component in a template called my-template.component.html, simply add the component tag like this:
 
 ```
 <app-meu-componente></app-meu-componente>
 ```
 
-<h3  style="color:BurlyWood;font-weight: bold">Utilizando o Angular Material</h3 >
+<h3  style="color:BurlyWood;font-weight: bold">Using Angular Material</h3 >
 
-O Angular Material é uma biblioteca de componentes UI que segue as diretrizes de design chamadas Material Design da Google. Este projeto já está configurado para integrar e usar componentes do Angular Material. Para utilizar:
+Angular Material is a UI component library that follows Google's Material Design guidelines. This project is already set up to integrate and use Angular Material components. To use:
 
-1. Importe os módulos de componentes Angular Material no seu módulo principal
+1. Import the necessary Angular Material component modules in your main module:
 
 ```
 import { NgModule } from '@angular/core';
@@ -230,7 +229,7 @@ import { MatInputModule } from '@angular/material/input';
 export class SeuModulo { }
 ```
 
-2. Agora você pode utilizar os componentes Angular Material em seus templates HTML. Por exemplo, se deseja usar o componente de botão (Button) e o componente de input (Input) em um componente chamado MeuComponente, adicione o seguinte código ao template HTML:
+2. Now you can use Angular Material components in your HTML templates. For example, to use the button and input components in a component called MyComponent, add the following code to the HTML template:
 
 ```
 <button mat-button>Meu Botão</button>
@@ -243,21 +242,19 @@ export class SeuModulo { }
 
 ```
 
-<h2  style="color:SteelBlue;font-weight: bold">Testes com Jest</h2>
+<h2  style="color:SteelBlue;font-weight: bold">Testing with Jest</h2>
 
-O desenvolvimento de testes é fundamental por várias razões. Aqui estão algumas das principais:
+Testing is crucial for several reasons. Here are the main ones:
 
-- Garantia de Qualidade: Testes ajudam a garantir que o código funciona como esperado e atende aos requisitos. Isso é crucial para identificar bugs e problemas antes que eles cheguem ao ambiente de produção.
+- Quality Assurance: Tests ensure that the code works as expected and meets requirements, which is critical to identify bugs and issues before they reach production.
+- Regression Detection: Automated tests help detect regressions—failures in parts of the code that previously worked fine. Jest makes it easy to run continuous tests to ensure changes in the code do not introduce new issues.
+- Living Documentation: Tests serve as documentation demonstrating how functions and components should behave. This can be useful for new developers joining the team and for future maintenance.
 
-- Detecção de Regresso: Testes automatizados permitem detectar regressões, ou seja, falhas introduzidas em partes do código que anteriormente funcionavam corretamente. Jest facilita a execução contínua de testes para garantir que alterações no código não introduzam novos problemas.
+Jest is a popular JavaScript testing library with several advantages.
 
-- Documentação Viva: Testes servem como uma forma de documentação que demonstra como as funções e componentes devem se comportar. Isso pode ser útil para novos desenvolvedores na equipe e para futuras manutenções.
+### Main Commands
 
-Jest é uma biblioteca de testes para JavaScript que se destaca por várias razões.
-
-### Principais comandos
-
-Para executar os testes desenvolvidos:
+To run the tests:
 
 ```
 npm run test
@@ -265,7 +262,7 @@ npm run test
 
 .
 .
-Para executar os testes desenvolvidos observando mudanças executando novamente os arquivos relevantes quando forem alterados:
+To run the tests and observe changes, executing relevant files when modified:
 
 ```
 npm run test:watch
@@ -273,13 +270,13 @@ npm run test:watch
 
 .
 .
-Para executar os testes desenvolvidos e gerar um relatório de cobertura:
+To run the tests and generate a coverage report:
 
 ```
 npm run test:coverage
 ```
 
-Após executar o comando navegue para a pasta a seguir e acesse o arquivo index.html no seu navegador.
+After running the command, navigate to the following folder and open the index.html file in your browser:
 
 ```
 coverage/
@@ -287,7 +284,7 @@ coverage/
 │  ├─ index.html
 ```
 
-Você irá encontrar um relatório como no exemplo abaixo:
+You'll find a report like the one below:
 
 ```
 File                    | % Stmts | % Branch | % Funcs | % Lines |
@@ -299,36 +296,33 @@ All files               |   85.00 |   78.00  |   90.00 |   83.00 |
 
 ```
 
-Neste exemplo:
+In this example:
 
-- app.js tem uma alta cobertura, sugerindo que a maioria do código está bem testada.
-- utils.js tem uma cobertura menor, indicando que mais testes podem ser necessários para esse arquivo.
+- app.js has high coverage, suggesting that most of the code is well-tested.
+- utils.js has lower coverage, indicating that more tests may be needed for that file.
 
-O relatório normalmente mostra quatro principais métricas de cobertura:
+The report typically shows four key coverage metrics:
 
-- Linhas (Line Coverage): Percentual de linhas de código que foram executadas durante os testes. Uma cobertura alta de linhas significa que a maioria do código foi testada.
+- Lines (Line Coverage): The percentage of code lines executed during tests. High line coverage means most of the code has been tested.
+- Functions (Function Coverage): The percentage of functions or methods called during tests. Good function coverage ensures all functions are tested.
+- Branches (Branch Coverage): The percentage of branches (conditions) within control structures (if, switch, etc.) that were executed. Branch coverage is important to ensure all logical possibilities are tested.
+- Statements (Statement Coverage): The percentage of statements executed. This is slightly more granular than line coverage, as it evaluates each individual statement.
 
-- Funções (Function Coverage): Percentual de funções ou métodos que foram chamados durante os testes. Uma boa cobertura de funções garante que todas as funções tenham sido testadas.
+With this information, you can adjust your testing strategy to better cover less-tested areas and ensure a more robust and reliable codebase.
 
-- Branches (Branch Coverage): Percentual de ramificações (condições) dentro de estruturas de controle (if, switch, etc.) que foram executadas. A cobertura de branches é importante para garantir que todas as possibilidades lógicas tenham sido testadas.
+<h2  style="color:SteelBlue;font-weight: bold">References</h2>
 
-- Statements (Statement Coverage): Percentual de declarações que foram executadas. Isso é um pouco mais granular que a cobertura de linhas, pois avalia cada declaração individualmente.
-
-Com essas informações, você pode ajustar sua estratégia de testes para cobrir melhor as áreas menos testadas e garantir uma base de código mais robusta e confiável.
-
-<h2  style="color:SteelBlue;font-weight: bold">Referências</h2>
-
-Node.js 20.x ou superior:
+Node.js 20.x or higher:
 https://nodejs.org/
 
 Angular 17.x:
 https://v17.angular.io/docs/
 
-Documentação oficial do Angular Material:
+Official Angular Material Documentation:
 https://v17.material.angular.io/
 
-Documentação oficial do Angular:
+Official Angular Documentation:
 https://angular.io/tutorial
 
-Lista de ícones do Material Design:
+Material Design Icons List:
 https://fonts.google.com/icons
